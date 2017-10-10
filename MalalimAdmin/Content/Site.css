@@ -1,0 +1,104 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.existingusers {
+    list-style: none;
+}
+
+    .existingusers li {
+        background-color: #e4e4e4;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        cursor: default;
+        float: left;
+        margin-right: 5px;
+        margin-top: 5px;
+        padding: 0 5px;
+        color: #333;
+    }
+
+        .existingusers li a {
+            text-decoration: none;
+            color: #999;
+        }
+
+/*Aurora Styling*/
+.navbar-inverse {
+    background-color: #dddae0;
+    border: none;
+}
+
+a.glyphicon, a.glyphicon:hover, a.glyphicon:focus {
+    text-decoration: none;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+    color: #ba8a85;
+}
+
+#scroll {
+    height: 500px;
+    overflow-y: scroll;
+}
+
+#dialog {
+    display: none;
+}
+.ui-dialog .ui-dialog-title {
+    color: #ba8a85;
+}
+.success-dialog {
+}
+
+.chat-msg-parentname {
+    font-size:medium; 
+    color:rgb(186, 138, 133);
+}
+
+.chat-msg-text {
+    padding-right: 30px;
+}
+
+.chat-msg-time {
+    padding-left: 30px;
+    margin: 5px;
+    font-size: 12px;
+    text-align: right;
+}
+
+.chat-msg-me {
+    margin: 10px;
+    float: right;
+    padding: 20px;
+    border: none;
+    color: white;
+    background-color: #23c6c8;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 60px;
+    max-width: 25%;
+}
+
+.chat-msg-other {
+    float: left;
+    margin: 10px;
+    padding: 20px;
+    border: none;
+    background-color: #e1e8ed;
+    border-radius: 5px;
+    margin-right: 60px;
+    max-width: 25%; 
+}
+
+    .chat-msg-me .glyphicon, .chat-msg-other .glyphicon {
+        cursor: pointer;
+    }

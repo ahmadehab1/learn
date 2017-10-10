@@ -1,0 +1,130 @@
+﻿@model MalalimAdmin.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsFeatured)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsFeatured)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpiryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalCoupons)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalCoupons)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RemainingCoupons)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RemainingCoupons)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxCouponsPerOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxCouponsPerOrder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WinnerCouponId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WinnerCouponId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_AdminUsers.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_AdminUsers.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

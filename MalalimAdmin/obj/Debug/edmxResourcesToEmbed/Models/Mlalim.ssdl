@@ -1,0 +1,634 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MalalimModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ActivationUserInformation">
+    <Key>
+      <PropertyRef Name="ActivationUserInformationId" />
+    </Key>
+    <Property Name="ActivationUserInformationId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SecondPhoneNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FacebookId" Type="nvarchar" MaxLength="250" />
+    <Property Name="GenderId" Type="int" Nullable="false" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="IsBlocked" Type="bit" Nullable="false" />
+    <Property Name="ProfileImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="NationalIdFrontImage" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="NationalIdBackImage" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Coupon">
+    <Key>
+      <PropertyRef Name="CouponId" />
+    </Key>
+    <Property Name="CouponId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="IsWin" Type="bit" />
+    <Property Name="IsDrawed" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="LockedTill" Type="date" Nullable="false" />
+    <Property Name="DrawedBy" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="GenderId" />
+    </Key>
+    <Property Name="GenderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Intrests">
+    <Key>
+      <PropertyRef Name="IntrestId" />
+    </Key>
+    <Property Name="IntrestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderCoupons">
+    <Key>
+      <PropertyRef Name="OrderCouponsId" />
+    </Key>
+    <Property Name="OrderCouponsId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CouponId" Type="bigint" Nullable="false" />
+    <Property Name="OrderId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CouponsNumber" Type="int" Nullable="false" />
+    <Property Name="CouponPrice" Type="money" Nullable="false" />
+    <Property Name="TotalPrice" Type="money" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CreatedOn" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentMethodId" Type="int" Nullable="false" />
+    <Property Name="PaymentStatusId" Type="int" Nullable="false" />
+    <Property Name="OrderId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Amount" Type="money" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CreatedOn" Type="date" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ModifiedOn" Type="date" Nullable="false" />
+    <Property Name="ExpiryDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentMethod">
+    <Key>
+      <PropertyRef Name="PaymentMethodId" />
+    </Key>
+    <Property Name="PaymentMethodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ExpiryDateRange" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentStatus">
+    <Key>
+      <PropertyRef Name="PaymentStatusId" />
+    </Key>
+    <Property Name="PaymentStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="Image1" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Image2" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Image3" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Image4" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="IsFeatured" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CreatedOn" Type="date" Nullable="false" />
+    <Property Name="ExpiryDate" Type="date" Nullable="false" />
+    <Property Name="TotalCoupons" Type="bigint" Nullable="false" />
+    <Property Name="RemainingCoupons" Type="bigint" Nullable="false" />
+    <Property Name="MaxCouponsPerOrder" Type="int" Nullable="false" />
+    <Property Name="WinnerCouponId" Type="nvarchar" MaxLength="128" />
+    <Property Name="IsVisible" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_AdminRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_AdminUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tbl_AdminUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_AdminUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_AdminUsers">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_ClientRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_ClientUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tbl_ClientUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_ClientUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_ClientUsers">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserIntrests">
+    <Key>
+      <PropertyRef Name="UserIntrestsId" />
+    </Key>
+    <Property Name="UserIntrestsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="IntrestId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Wishlist">
+    <Key>
+      <PropertyRef Name="WishlistId" />
+    </Key>
+    <Property Name="WishlistId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="IsLiked" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ActivationUserInformation_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+    <End Role="ActivationUserInformation" Type="Self.ActivationUserInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="ActivationUserInformation">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivationUserInformation_Countries">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+    <End Role="ActivationUserInformation" Type="Self.ActivationUserInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="ActivationUserInformation">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivationUserInformation_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="ActivationUserInformation" Type="Self.ActivationUserInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderId" />
+      </Principal>
+      <Dependent Role="ActivationUserInformation">
+        <PropertyRef Name="GenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivationUserInformation_tbl_ClientUsers">
+    <End Role="tbl_ClientUsers" Type="Self.tbl_ClientUsers" Multiplicity="0..1" />
+    <End Role="ActivationUserInformation" Type="Self.ActivationUserInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ClientUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="ActivationUserInformation">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cities_Countries">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+    <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="Cities">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coupon_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Coupon">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId">
+    <End Role="tbl_AdminUsers" Type="Self.tbl_AdminUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_AdminUserClaims" Type="Self.tbl_AdminUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_AdminUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_AdminUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbl_AdminUserLogins_dbo_tbl_AdminUsers_UserId">
+    <End Role="tbl_AdminUsers" Type="Self.tbl_AdminUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_AdminUserLogins" Type="Self.tbl_AdminUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_AdminUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_AdminUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbl_AdminUserRoles_dbo_tbl_AdminRoles_RoleId">
+    <End Role="tbl_AdminRoles" Type="Self.tbl_AdminRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_AdminUserRoles" Type="Self.tbl_AdminUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_AdminRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_AdminUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbl_AdminUserRoles_dbo_tbl_AdminUsers_UserId">
+    <End Role="tbl_AdminUsers" Type="Self.tbl_AdminUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_AdminUserRoles" Type="Self.tbl_AdminUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_AdminUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_AdminUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbl_ClientUserClaims_dbo_tbl_ClientUsers_UserId">
+    <End Role="tbl_ClientUsers" Type="Self.tbl_ClientUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_ClientUserClaims" Type="Self.tbl_ClientUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ClientUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_ClientUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbl_ClientUserLogins_dbo_tbl_ClientUsers_UserId">
+    <End Role="tbl_ClientUsers" Type="Self.tbl_ClientUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_ClientUserLogins" Type="Self.tbl_ClientUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ClientUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_ClientUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbl_ClientUserRoles_dbo_tbl_ClientRoles_RoleId">
+    <End Role="tbl_ClientRoles" Type="Self.tbl_ClientRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_ClientUserRoles" Type="Self.tbl_ClientUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ClientRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_ClientUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbl_ClientUserRoles_dbo_tbl_ClientUsers_UserId">
+    <End Role="tbl_ClientUsers" Type="Self.tbl_ClientUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_ClientUserRoles" Type="Self.tbl_ClientUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ClientUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_ClientUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderCoupons_Coupon">
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="1" />
+    <End Role="OrderCoupons" Type="Self.OrderCoupons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="CouponId" />
+      </Principal>
+      <Dependent Role="OrderCoupons">
+        <PropertyRef Name="CouponId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderCoupons_Orders">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+    <End Role="OrderCoupons" Type="Self.OrderCoupons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderCoupons">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Orders">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_PaymentMethod">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="PaymentMethodId" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="PaymentMethodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_PaymentStatus">
+    <End Role="PaymentStatus" Type="Self.PaymentStatus" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentStatus">
+        <PropertyRef Name="PaymentStatusId" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="PaymentStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_tbl_AdminUsers">
+    <End Role="tbl_AdminUsers" Type="Self.tbl_AdminUsers" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_AdminUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserIntrests_Intrests">
+    <End Role="Intrests" Type="Self.Intrests" Multiplicity="1" />
+    <End Role="UserIntrests" Type="Self.UserIntrests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Intrests">
+        <PropertyRef Name="IntrestId" />
+      </Principal>
+      <Dependent Role="UserIntrests">
+        <PropertyRef Name="IntrestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MalalimModelStoreContainer">
+    <EntitySet Name="ActivationUserInformation" EntityType="Self.ActivationUserInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Coupon" EntityType="Self.Coupon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Intrests" EntityType="Self.Intrests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderCoupons" EntityType="Self.OrderCoupons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentStatus" EntityType="Self.PaymentStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_AdminRoles" EntityType="Self.tbl_AdminRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_AdminUserClaims" EntityType="Self.tbl_AdminUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_AdminUserLogins" EntityType="Self.tbl_AdminUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_AdminUserRoles" EntityType="Self.tbl_AdminUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_AdminUsers" EntityType="Self.tbl_AdminUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ClientRoles" EntityType="Self.tbl_ClientRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ClientUserClaims" EntityType="Self.tbl_ClientUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ClientUserLogins" EntityType="Self.tbl_ClientUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ClientUserRoles" EntityType="Self.tbl_ClientUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_ClientUsers" EntityType="Self.tbl_ClientUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserIntrests" EntityType="Self.UserIntrests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wishlist" EntityType="Self.Wishlist" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ActivationUserInformation_Cities" Association="Self.FK_ActivationUserInformation_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="ActivationUserInformation" EntitySet="ActivationUserInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivationUserInformation_Countries" Association="Self.FK_ActivationUserInformation_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="ActivationUserInformation" EntitySet="ActivationUserInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivationUserInformation_Gender" Association="Self.FK_ActivationUserInformation_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="ActivationUserInformation" EntitySet="ActivationUserInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivationUserInformation_tbl_ClientUsers" Association="Self.FK_ActivationUserInformation_tbl_ClientUsers">
+      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
+      <End Role="ActivationUserInformation" EntitySet="ActivationUserInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Cities" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coupon_Product" Association="Self.FK_Coupon_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Coupon" EntitySet="Coupon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId" Association="Self.FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId">
+      <End Role="tbl_AdminUsers" EntitySet="tbl_AdminUsers" />
+      <End Role="tbl_AdminUserClaims" EntitySet="tbl_AdminUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbl_AdminUserLogins_dbo_tbl_AdminUsers_UserId" Association="Self.FK_dbo_tbl_AdminUserLogins_dbo_tbl_AdminUsers_UserId">
+      <End Role="tbl_AdminUsers" EntitySet="tbl_AdminUsers" />
+      <End Role="tbl_AdminUserLogins" EntitySet="tbl_AdminUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbl_AdminUserRoles_dbo_tbl_AdminRoles_RoleId" Association="Self.FK_dbo_tbl_AdminUserRoles_dbo_tbl_AdminRoles_RoleId">
+      <End Role="tbl_AdminRoles" EntitySet="tbl_AdminRoles" />
+      <End Role="tbl_AdminUserRoles" EntitySet="tbl_AdminUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbl_AdminUserRoles_dbo_tbl_AdminUsers_UserId" Association="Self.FK_dbo_tbl_AdminUserRoles_dbo_tbl_AdminUsers_UserId">
+      <End Role="tbl_AdminUsers" EntitySet="tbl_AdminUsers" />
+      <End Role="tbl_AdminUserRoles" EntitySet="tbl_AdminUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbl_ClientUserClaims_dbo_tbl_ClientUsers_UserId" Association="Self.FK_dbo_tbl_ClientUserClaims_dbo_tbl_ClientUsers_UserId">
+      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
+      <End Role="tbl_ClientUserClaims" EntitySet="tbl_ClientUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbl_ClientUserLogins_dbo_tbl_ClientUsers_UserId" Association="Self.FK_dbo_tbl_ClientUserLogins_dbo_tbl_ClientUsers_UserId">
+      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
+      <End Role="tbl_ClientUserLogins" EntitySet="tbl_ClientUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbl_ClientUserRoles_dbo_tbl_ClientRoles_RoleId" Association="Self.FK_dbo_tbl_ClientUserRoles_dbo_tbl_ClientRoles_RoleId">
+      <End Role="tbl_ClientRoles" EntitySet="tbl_ClientRoles" />
+      <End Role="tbl_ClientUserRoles" EntitySet="tbl_ClientUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbl_ClientUserRoles_dbo_tbl_ClientUsers_UserId" Association="Self.FK_dbo_tbl_ClientUserRoles_dbo_tbl_ClientUsers_UserId">
+      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
+      <End Role="tbl_ClientUserRoles" EntitySet="tbl_ClientUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderCoupons_Coupon" Association="Self.FK_OrderCoupons_Coupon">
+      <End Role="Coupon" EntitySet="Coupon" />
+      <End Role="OrderCoupons" EntitySet="OrderCoupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderCoupons_Orders" Association="Self.FK_OrderCoupons_Orders">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderCoupons" EntitySet="OrderCoupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Orders" Association="Self.FK_Payment_Orders">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_PaymentMethod" Association="Self.FK_Payment_PaymentMethod">
+      <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_PaymentStatus" Association="Self.FK_Payment_PaymentStatus">
+      <End Role="PaymentStatus" EntitySet="PaymentStatus" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_tbl_AdminUsers" Association="Self.FK_Product_tbl_AdminUsers">
+      <End Role="tbl_AdminUsers" EntitySet="tbl_AdminUsers" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserIntrests_Intrests" Association="Self.FK_UserIntrests_Intrests">
+      <End Role="Intrests" EntitySet="Intrests" />
+      <End Role="UserIntrests" EntitySet="UserIntrests" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

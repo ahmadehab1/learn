@@ -1,0 +1,89 @@
+﻿@model IEnumerable<MalalimAdmin.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Products</h2>
+
+<p>
+    @Html.ActionLink("New Product", "Create")
+</p>
+<section>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box">
+                <div class="box-body">
+                    @if(Model.FirstOrDefault() == null )
+                    {
+                        <h2>No Products Found</h2>
+                    }
+                    else
+                    {
+                        <table class="DTClass table table-bordered table-striped">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IsFeatured)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CreatedOn)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ExpiryDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TotalCoupons)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.RemainingCoupons)
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IsFeatured)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CreatedOn)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ExpiryDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TotalCoupons)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RemainingCoupons)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
