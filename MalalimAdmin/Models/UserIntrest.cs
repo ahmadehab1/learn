@@ -19,5 +19,6 @@ namespace MalalimAdmin.Models
         public int IntrestId { get; set; }
     
         public virtual Intrest Intrest { get; set; }
+        public virtual tbl_ClientUsers tbl_ClientUsers { get; set; }
     }
 }

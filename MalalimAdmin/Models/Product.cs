@@ -18,6 +18,7 @@ namespace MalalimAdmin.Models
         public Product()
         {
             this.Coupons = new HashSet<Coupon>();
+            this.Wishlists = new HashSet<Wishlist>();
         }
     
         public int ProductId { get; set; }
@@ -40,5 +41,7 @@ namespace MalalimAdmin.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Coupon> Coupons { get; set; }
         public virtual tbl_AdminUsers tbl_AdminUsers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Wishlist> Wishlists { get; set; }
     }
 }

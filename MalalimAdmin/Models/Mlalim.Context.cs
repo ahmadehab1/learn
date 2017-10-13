@@ -36,6 +36,7 @@ namespace MalalimAdmin.Models
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<PaymentStatu> PaymentStatus { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<tbl_AdminRoles> tbl_AdminRoles { get; set; }
         public virtual DbSet<tbl_AdminUserClaims> tbl_AdminUserClaims { get; set; }
         public virtual DbSet<tbl_AdminUserLogins> tbl_AdminUserLogins { get; set; }
@@ -44,8 +45,7 @@ namespace MalalimAdmin.Models
         public virtual DbSet<tbl_ClientUserClaims> tbl_ClientUserClaims { get; set; }
         public virtual DbSet<tbl_ClientUserLogins> tbl_ClientUserLogins { get; set; }
         public virtual DbSet<tbl_ClientUsers> tbl_ClientUsers { get; set; }
-        public virtual DbSet<UserIntrest> UserIntrests { get; set; }
         public virtual DbSet<Wishlist> Wishlists { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<UserIntrest> UserIntrests { get; set; }
     }
 }

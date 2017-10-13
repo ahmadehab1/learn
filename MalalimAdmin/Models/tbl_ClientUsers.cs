@@ -20,7 +20,9 @@ namespace MalalimAdmin.Models
             this.ActivationUserInformations = new HashSet<ActivationUserInformation>();
             this.tbl_ClientUserClaims = new HashSet<tbl_ClientUserClaims>();
             this.tbl_ClientUserLogins = new HashSet<tbl_ClientUserLogins>();
+            this.Wishlists = new HashSet<Wishlist>();
             this.tbl_ClientRoles = new HashSet<tbl_ClientRoles>();
+            this.UserIntrests = new HashSet<UserIntrest>();
         }
     
         public string UserId { get; set; }
@@ -43,6 +45,10 @@ namespace MalalimAdmin.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_ClientUserLogins> tbl_ClientUserLogins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Wishlist> Wishlists { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_ClientRoles> tbl_ClientRoles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserIntrest> UserIntrests { get; set; }
     }
 }

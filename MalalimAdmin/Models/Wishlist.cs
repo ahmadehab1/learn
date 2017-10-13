@@ -15,8 +15,11 @@ namespace MalalimAdmin.Models
     public partial class Wishlist
     {
         public int WishlistId { get; set; }
-        public string ProductId { get; set; }
+        public int ProductId { get; set; }
         public string UserId { get; set; }
         public bool IsLiked { get; set; }
+    
+        public virtual Product Product { get; set; }
+        public virtual tbl_ClientUsers tbl_ClientUsers { get; set; }
     }
 }
