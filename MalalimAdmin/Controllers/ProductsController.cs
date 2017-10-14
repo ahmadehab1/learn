@@ -48,8 +48,11 @@ namespace MalalimAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,Name,Price,Image1,Image2,Image3,Image4,IsFeatured,CreatedBy,CreatedOn,ExpiryDate,TotalCoupons,RemainingCoupons,MaxCouponsPerOrder,WinnerCouponId")] Product product)
+        public ActionResult Create([Bind(Include = "ProductId,Name,Price,Image1,Image2,Image3,Image4,IsFeatured,CreatedBy,CreatedOn,ExpiryDate,TotalCoupons,MaxCouponsPerOrder")] Product product)
         {
+            product.CreatedOn = DateTime.Now;
+            product.CreatedBy = "88ea18da-9b71-4932-b299-9e82317b8594"; //:todo
+            product.RemainingCoupons = product.TotalCoupons;
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);

@@ -12,7 +12,7 @@ using MalalimAdmin.Models;
 
 namespace MalalimAdmin.Controllers
 {
-    [Authorize]
+    [CustomAuthorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

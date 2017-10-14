@@ -291,6 +291,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utilities\CustomAuthorize.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -347,6 +348,7 @@
     <Content Include="Content\img\html_logo.png" />
     <Content Include="Content\img\loading-large.gif" />
     <Content Include="Content\img\meteor_logo.png" />
+    <Content Include="Content\img\mlalim-logo.jpg" />
     <Content Include="Content\img\mvc_logo.png" />
     <Content Include="Content\img\off_canvas.jpg" />
     <Content Include="Content\img\p1.jpg" />
@@ -718,6 +720,9 @@
       <DependentUpon>Mlalim.edmx</DependentUpon>
       <LastGenOutput>Mlalim.cs</LastGenOutput>
     </Content>
+    <Content Include="Plugins\croppie\croppie.css" />
+    <Content Include="Plugins\croppie\croppie.js" />
+    <Content Include="Plugins\croppie\croppie.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -777,7 +782,7 @@
     <Content Include="Content\js\plugins\datatables\extensions\TableTools\images\psd\printer.psd" />
     <Content Include="Content\js\plugins\datatables\extensions\TableTools\Readme.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\croppers.js" />
+    <Content Include="Scripts\customCroppers.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
