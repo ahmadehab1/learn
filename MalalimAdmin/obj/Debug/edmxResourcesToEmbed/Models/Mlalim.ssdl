@@ -249,7 +249,7 @@
       <PropertyRef Name="WishlistId" />
     </Key>
     <Property Name="WishlistId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProductId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
     <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="IsLiked" Type="bit" Nullable="false" />
   </EntityType>
@@ -521,6 +521,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_UserIntrests_tbl_ClientUsers">
+    <End Role="tbl_ClientUsers" Type="Self.tbl_ClientUsers" Multiplicity="1" />
+    <End Role="UserIntrests" Type="Self.UserIntrests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ClientUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserIntrests">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wishlist_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Wishlist" Type="Self.Wishlist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Wishlist">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wishlist_tbl_ClientUsers">
+    <End Role="tbl_ClientUsers" Type="Self.tbl_ClientUsers" Multiplicity="1" />
+    <End Role="Wishlist" Type="Self.Wishlist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ClientUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Wishlist">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="MalalimModelStoreContainer">
     <EntitySet Name="ActivationUserInformation" EntityType="Self.ActivationUserInformation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
@@ -629,6 +665,18 @@
     <AssociationSet Name="FK_UserIntrests_Intrests" Association="Self.FK_UserIntrests_Intrests">
       <End Role="Intrests" EntitySet="Intrests" />
       <End Role="UserIntrests" EntitySet="UserIntrests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserIntrests_tbl_ClientUsers" Association="Self.FK_UserIntrests_tbl_ClientUsers">
+      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
+      <End Role="UserIntrests" EntitySet="UserIntrests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wishlist_Product" Association="Self.FK_Wishlist_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Wishlist" EntitySet="Wishlist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wishlist_tbl_ClientUsers" Association="Self.FK_Wishlist_tbl_ClientUsers">
+      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
+      <End Role="Wishlist" EntitySet="Wishlist" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

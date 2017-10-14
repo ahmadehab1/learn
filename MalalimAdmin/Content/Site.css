@@ -58,47 +58,98 @@ a.glyphicon, a.glyphicon:hover, a.glyphicon:focus {
 }
 .success-dialog {
 }
-
-.chat-msg-parentname {
-    font-size:medium; 
-    color:rgb(186, 138, 133);
-}
-
-.chat-msg-text {
-    padding-right: 30px;
-}
-
-.chat-msg-time {
-    padding-left: 30px;
-    margin: 5px;
-    font-size: 12px;
-    text-align: right;
-}
-
-.chat-msg-me {
-    margin: 10px;
-    float: right;
-    padding: 20px;
-    border: none;
+button,
+a.btn {
+    min-width: 130px;
+    margin-bottom: 15px;
+    background-color: #3c8dbc;
     color: white;
-    background-color: #23c6c8;
-    border-radius: 5px;
+    padding: 10px 15px;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     font-size: 16px;
-    margin-left: 60px;
-    max-width: 25%;
+    cursor: pointer;
+    text-decoration: none;
+    text-shadow: none;
+    display: inline-block;
+    cursor: pointer;
 }
 
-.chat-msg-other {
-    float: left;
-    margin: 10px;
-    padding: 20px;
-    border: none;
-    background-color: #e1e8ed;
-    border-radius: 5px;
-    margin-right: 60px;
-    max-width: 25%; 
+input[type="file"] {
+    cursor: pointer;
 }
 
-    .chat-msg-me .glyphicon, .chat-msg-other .glyphicon {
-        cursor: pointer;
+button:focus {
+    outline: 0;
+}
+
+.file-btn {
+    position: relative;
+}
+
+    .file-btn input[type="file"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
     }
+.upload-demo .upload-demo-wrap,
+.upload-demo .upload-result,
+.upload-demo.ready .upload-msg {
+    display: none;
+}
+
+.upload-demo.ready .upload-demo-wrap {
+    display: block;
+}
+
+.upload-demo.ready .upload-result {
+    display: inline-block;
+}
+
+.upload-demo-wrap {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.upload-container {
+    text-align: center;
+    /*padding: 50px;*/
+    font-size: 22px;
+    color: #aaa;
+    width: 100%;
+    height: 300px;
+    /*margin: 50px auto;*/
+    border: 1px solid #aaa;
+}
+
+.upload-container-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+.orig-overlay {
+    background: white;
+    border: 1px solid #ccc;
+}
+
+.upload-container-overlay > span {
+    font-size: 25px;
+    color: #8b8b8b;
+    line-height: 300px;
+}
+
+.upload-container-overlay img {
+    width: 200px;
+    margin-top: 50px;
+}

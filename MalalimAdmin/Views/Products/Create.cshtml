@@ -30,9 +30,180 @@
             </div>
         </div>
 
-        
-
+        <div class="form-group" style="margin-bottom:30px">
+            @Html.LabelFor(model => model.Image1, "Image #1 (810 × 387)", htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-10">
+                <div class="grid">
+                    <div class="col-md-10 nopadding">
+                        <div id="perfc-img1-img-overlay-text" class="upload-container-overlay orig-overlay">
+                            <span>Select a file to start cropping</span>
+                        </div>
+                        <div id="perfc-img1-img-container" class="upload-container">
+                            <img id="perfc-img1" src="" />
+                        </div>
+                        <div id="perfc-img1-img-overlay" class="upload-container-overlay">
+                            <img id="perfc-img1-loading" src="~/Content/img/loading-large.gif" />
+                        </div>
+                        <div id="perfc-img1-img-overlay-bar" class="upload-container-overlay">
+                            <div id="perfc-img1-pbar" class="t-adm-p-bar">
+                                <span>Uploading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="text-align:center">
+                        <div class="row">
+                            <a class="btn file-btn upload-btn1">
+                                <span>Select File</span>
+                                <input type="file" id="perfc-img1-upload" value="Choose a file" accept="image/*" />
+                            </a>
+                        </div>
+                        <div class="row">
+                            <a id="perfc-img1-crop" class="btn file-btn crop-btn1">
+                                <span>Crop &amp; Upload</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="form-group">
+            <label class="control-label col-md-2" for="Image">Saved Image</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Image1, new { htmlAttributes = new { id = "perfc-img1-name", @class = "form-control required", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Image1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group" style="margin-bottom:30px">
+            @Html.LabelFor(model => model.Image2, "Image #2 (400 × 400)", htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-10">
+                <div class="grid">
+                    <div class="col-md-10 nopadding">
+                        <div id="perfc-img2-img-overlay-text" class="upload-container-overlay orig-overlay">
+                            <span>Select a file to start cropping</span>
+                        </div>
+                        <div id="perfc-img2-img-container" class="upload-container">
+                            <img id="perfc-img2" src="" />
+                        </div>
+                        <div id="perfc-img2-img-overlay" class="upload-container-overlay">
+                            <img id="perfc-img2-loading" src="~/Content/img/loading-large.gif" />
+                        </div>
+                        <div id="perfc-img2-img-overlay-bar" class="upload-container-overlay">
+                            <div id="perfc-img2-pbar" class="t-adm-p-bar">
+                                <span>Uploading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="text-align:center">
+                        <div class="row">
+                            <a class="btn file-btn upload-btn2">
+                                <span>Select File</span>
+                                <input type="file" id="perfc-img2-upload" value="Choose a file" accept="image/*" />
+                            </a>
+                        </div>
+                        <div class="row">
+                            <a id="perfc-img2-crop" class="btn file-btn crop-btn2">
+                                <span>Crop &amp; Upload</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Image2">Saved Image</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Image2, new { htmlAttributes = new { id = "perfc-img2-name", @class = "form-control required", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Image2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group" style="margin-bottom:30px">
+            @Html.LabelFor(model => model.Image3, "Image #3 (100 × 100)", htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-10">
+                <div class="grid">
+                    <div class="col-md-10 nopadding">
+                        <div id="perfc-img3-img-overlay-text" class="upload-container-overlay orig-overlay">
+                            <span>Select a file to start cropping</span>
+                        </div>
+                        <div id="perfc-img3-img-container" class="upload-container">
+                            <img id="perfc-img3" src="" />
+                        </div>
+                        <div id="perfc-img3-img-overlay" class="upload-container-overlay">
+                            <img id="perfc-img3-loading" src="~/Content/img/loading-large.gif" />
+                        </div>
+                        <div id="perfc-img3-img-overlay-bar" class="upload-container-overlay">
+                            <div id="perfc-img3-pbar" class="t-adm-p-bar">
+                                <span>Uploading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="text-align:center">
+                        <div class="row">
+                            <a class="btn file-btn upload-btn3">
+                                <span>Select File</span>
+                                <input type="file" id="perfc-img3-upload" value="Choose a file" accept="image/*" />
+                            </a>
+                        </div>
+                        <div class="row">
+                            <a id="perfc-img3-crop" class="btn file-btn crop-btn3">
+                                <span>Crop &amp; Upload</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Image3">Saved Image</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Image3, new { htmlAttributes = new { id = "perfc-img3-name", @class = "form-control required", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Image3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group" style="margin-bottom:30px">
+            @Html.LabelFor(model => model.Image4, "Image #4 (250 × 130)", htmlAttributes: new { @class = "control-label col-md-2 required" })
+            <div class="col-md-10">
+                <div class="grid">
+                    <div class="col-md-10 nopadding">
+                        <div id="perfc-img4-img-overlay-text" class="upload-container-overlay orig-overlay">
+                            <span>Select a file to start cropping</span>
+                        </div>
+                        <div id="perfc-img4-img-container" class="upload-container">
+                            <img id="perfc-img4" src="" />
+                        </div>
+                        <div id="perfc-img4-img-overlay" class="upload-container-overlay">
+                            <img id="perfc-img4-loading" src="~/Content/img/loading-large.gif" />
+                        </div>
+                        <div id="perfc-img4-img-overlay-bar" class="upload-container-overlay">
+                            <div id="perfc-img4-pbar" class="t-adm-p-bar">
+                                <span>Uploading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="text-align:center">
+                        <div class="row">
+                            <a class="btn file-btn upload-btn4">
+                                <span>Select File</span>
+                                <input type="file" id="perfc-img4-upload" value="Choose a file" accept="image/*" />
+                            </a>
+                        </div>
+                        <div class="row">
+                            <a id="perfc-img4-crop" class="btn file-btn crop-btn4">
+                                <span>Crop &amp; Upload</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Image4">Saved Image</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Image4, new { htmlAttributes = new { id = "perfc-img4-name", @class = "form-control required", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Image4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Image1, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Image1, new { htmlAttributes = new { @class = "form-control" } })
@@ -62,7 +233,7 @@
                 @Html.EditorFor(model => model.Image4, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Image4, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.IsFeatured, htmlAttributes: new { @class = "control-label col-md-2" })

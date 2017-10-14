@@ -345,6 +345,7 @@
     <Content Include="Content\img\full_height.jpg" />
     <Content Include="Content\img\headphones.jpg" />
     <Content Include="Content\img\html_logo.png" />
+    <Content Include="Content\img\loading-large.gif" />
     <Content Include="Content\img\meteor_logo.png" />
     <Content Include="Content\img\mvc_logo.png" />
     <Content Include="Content\img\off_canvas.jpg" />
@@ -776,6 +777,7 @@
     <Content Include="Content\js\plugins\datatables\extensions\TableTools\images\psd\printer.psd" />
     <Content Include="Content\js\plugins\datatables\extensions\TableTools\Readme.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\croppers.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

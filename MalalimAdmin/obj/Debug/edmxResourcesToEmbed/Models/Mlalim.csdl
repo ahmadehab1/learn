@@ -1,24 +1,136 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MalalimModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MalalimEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ActivationUserInformations" EntityType="MalalimModel.ActivationUserInformation" />
+    <EntitySet Name="Cities" EntityType="MalalimModel.City" />
+    <EntitySet Name="Countries" EntityType="MalalimModel.Country" />
+    <EntitySet Name="Coupons" EntityType="MalalimModel.Coupon" />
+    <EntitySet Name="Genders" EntityType="MalalimModel.Gender" />
+    <EntitySet Name="Intrests" EntityType="MalalimModel.Intrest" />
+    <EntitySet Name="OrderCoupons" EntityType="MalalimModel.OrderCoupon" />
+    <EntitySet Name="Orders" EntityType="MalalimModel.Order" />
+    <EntitySet Name="Payments" EntityType="MalalimModel.Payment" />
+    <EntitySet Name="PaymentMethods" EntityType="MalalimModel.PaymentMethod" />
+    <EntitySet Name="PaymentStatus" EntityType="MalalimModel.PaymentStatu" />
+    <EntitySet Name="Products" EntityType="MalalimModel.Product" />
+    <EntitySet Name="tbl_AdminRoles" EntityType="MalalimModel.tbl_AdminRoles" />
+    <EntitySet Name="tbl_AdminUserClaims" EntityType="MalalimModel.tbl_AdminUserClaims" />
+    <EntitySet Name="tbl_AdminUserLogins" EntityType="MalalimModel.tbl_AdminUserLogins" />
+    <EntitySet Name="tbl_AdminUsers" EntityType="MalalimModel.tbl_AdminUsers" />
+    <EntitySet Name="tbl_ClientRoles" EntityType="MalalimModel.tbl_ClientRoles" />
+    <EntitySet Name="tbl_ClientUserClaims" EntityType="MalalimModel.tbl_ClientUserClaims" />
+    <EntitySet Name="tbl_ClientUserLogins" EntityType="MalalimModel.tbl_ClientUserLogins" />
+    <EntitySet Name="tbl_ClientUsers" EntityType="MalalimModel.tbl_ClientUsers" />
+    <EntitySet Name="Wishlists" EntityType="MalalimModel.Wishlist" />
+    <AssociationSet Name="FK_ActivationUserInformation_Cities" Association="MalalimModel.FK_ActivationUserInformation_Cities">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="ActivationUserInformation" EntitySet="ActivationUserInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivationUserInformation_Countries" Association="MalalimModel.FK_ActivationUserInformation_Countries">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="ActivationUserInformation" EntitySet="ActivationUserInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivationUserInformation_Gender" Association="MalalimModel.FK_ActivationUserInformation_Gender">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="ActivationUserInformation" EntitySet="ActivationUserInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActivationUserInformation_tbl_ClientUsers" Association="MalalimModel.FK_ActivationUserInformation_tbl_ClientUsers">
+      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
+      <End Role="ActivationUserInformation" EntitySet="ActivationUserInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cities_Countries" Association="MalalimModel.FK_Cities_Countries">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coupon_Product" Association="MalalimModel.FK_Coupon_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Coupon" EntitySet="Coupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderCoupons_Coupon" Association="MalalimModel.FK_OrderCoupons_Coupon">
+      <End Role="Coupon" EntitySet="Coupons" />
+      <End Role="OrderCoupon" EntitySet="OrderCoupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderCoupons_Orders" Association="MalalimModel.FK_OrderCoupons_Orders">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderCoupon" EntitySet="OrderCoupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Orders" Association="MalalimModel.FK_Payment_Orders">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_PaymentMethod" Association="MalalimModel.FK_Payment_PaymentMethod">
+      <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_PaymentStatus" Association="MalalimModel.FK_Payment_PaymentStatus">
+      <End Role="PaymentStatu" EntitySet="PaymentStatus" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_tbl_AdminUsers" Association="MalalimModel.FK_Product_tbl_AdminUsers">
+      <End Role="tbl_AdminUsers" EntitySet="tbl_AdminUsers" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wishlist_Product" Association="MalalimModel.FK_Wishlist_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Wishlist" EntitySet="Wishlists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId" Association="MalalimModel.FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId">
+      <End Role="tbl_AdminUsers" EntitySet="tbl_AdminUsers" />
+      <End Role="tbl_AdminUserClaims" EntitySet="tbl_AdminUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbl_AdminUserLogins_dbo_tbl_AdminUsers_UserId" Association="MalalimModel.FK_dbo_tbl_AdminUserLogins_dbo_tbl_AdminUsers_UserId">
+      <End Role="tbl_AdminUsers" EntitySet="tbl_AdminUsers" />
+      <End Role="tbl_AdminUserLogins" EntitySet="tbl_AdminUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbl_ClientUserClaims_dbo_tbl_ClientUsers_UserId" Association="MalalimModel.FK_dbo_tbl_ClientUserClaims_dbo_tbl_ClientUsers_UserId">
+      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
+      <End Role="tbl_ClientUserClaims" EntitySet="tbl_ClientUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_tbl_ClientUserLogins_dbo_tbl_ClientUsers_UserId" Association="MalalimModel.FK_dbo_tbl_ClientUserLogins_dbo_tbl_ClientUsers_UserId">
+      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
+      <End Role="tbl_ClientUserLogins" EntitySet="tbl_ClientUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wishlist_tbl_ClientUsers" Association="MalalimModel.FK_Wishlist_tbl_ClientUsers">
+      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
+      <End Role="Wishlist" EntitySet="Wishlists" />
+    </AssociationSet>
+    <AssociationSet Name="tbl_AdminUserRoles" Association="MalalimModel.tbl_AdminUserRoles">
+      <End Role="tbl_AdminRoles" EntitySet="tbl_AdminRoles" />
+      <End Role="tbl_AdminUsers" EntitySet="tbl_AdminUsers" />
+    </AssociationSet>
+    <AssociationSet Name="tbl_ClientUserRoles" Association="MalalimModel.tbl_ClientUserRoles">
+      <End Role="tbl_ClientRoles" EntitySet="tbl_ClientRoles" />
+      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
+    </AssociationSet>
+    <EntitySet Name="UserIntrests" EntityType="MalalimModel.UserIntrest" />
+    <AssociationSet Name="FK_UserIntrests_Intrests" Association="MalalimModel.FK_UserIntrests_Intrests">
+      <End Role="Intrest" EntitySet="Intrests" />
+      <End Role="UserIntrest" EntitySet="UserIntrests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserIntrests_tbl_ClientUsers" Association="MalalimModel.FK_UserIntrests_tbl_ClientUsers">
+      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
+      <End Role="UserIntrest" EntitySet="UserIntrests" />
+    </AssociationSet>
+  </EntityContainer>
   <EntityType Name="ActivationUserInformation">
     <Key>
       <PropertyRef Name="ActivationUserInformationId" />
     </Key>
     <Property Name="ActivationUserInformationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SecondPhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SecondPhoneNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="FacebookId" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="GenderId" Type="Int32" Nullable="false" />
     <Property Name="CountryId" Type="Int32" Nullable="false" />
     <Property Name="CityId" Type="Int32" Nullable="false" />
     <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
     <Property Name="ProfileImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="NationalIdFrontImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="NationalIdBackImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NationalIdFrontImage" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NationalIdBackImage" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="City" Relationship="Self.FK_ActivationUserInformation_Cities" FromRole="ActivationUserInformation" ToRole="Cities" />
-    <NavigationProperty Name="Country" Relationship="Self.FK_ActivationUserInformation_Countries" FromRole="ActivationUserInformation" ToRole="Countries" />
-    <NavigationProperty Name="Gender" Relationship="Self.FK_ActivationUserInformation_Gender" FromRole="ActivationUserInformation" ToRole="Gender" />
-    <NavigationProperty Name="tbl_ClientUsers" Relationship="Self.FK_ActivationUserInformation_tbl_ClientUsers" FromRole="ActivationUserInformation" ToRole="tbl_ClientUsers" />
+    <NavigationProperty Name="City" Relationship="MalalimModel.FK_ActivationUserInformation_Cities" FromRole="ActivationUserInformation" ToRole="City" />
+    <NavigationProperty Name="Country" Relationship="MalalimModel.FK_ActivationUserInformation_Countries" FromRole="ActivationUserInformation" ToRole="Country" />
+    <NavigationProperty Name="Gender" Relationship="MalalimModel.FK_ActivationUserInformation_Gender" FromRole="ActivationUserInformation" ToRole="Gender" />
+    <NavigationProperty Name="tbl_ClientUsers" Relationship="MalalimModel.FK_ActivationUserInformation_tbl_ClientUsers" FromRole="ActivationUserInformation" ToRole="tbl_ClientUsers" />
   </EntityType>
   <EntityType Name="City">
     <Key>
@@ -26,52 +138,52 @@
     </Key>
     <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CountryId" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="ActivationUserInformations" Relationship="Self.FK_ActivationUserInformation_Cities" FromRole="Cities" ToRole="ActivationUserInformation" />
-    <NavigationProperty Name="Country" Relationship="Self.FK_Cities_Countries" FromRole="Cities" ToRole="Countries" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ActivationUserInformations" Relationship="MalalimModel.FK_ActivationUserInformation_Cities" FromRole="City" ToRole="ActivationUserInformation" />
+    <NavigationProperty Name="Country" Relationship="MalalimModel.FK_Cities_Countries" FromRole="City" ToRole="Country" />
   </EntityType>
   <EntityType Name="Country">
     <Key>
       <PropertyRef Name="CountryId" />
     </Key>
     <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Code" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="ActivationUserInformations" Relationship="Self.FK_ActivationUserInformation_Countries" FromRole="Countries" ToRole="ActivationUserInformation" />
-    <NavigationProperty Name="Cities" Relationship="Self.FK_Cities_Countries" FromRole="Countries" ToRole="Cities" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ActivationUserInformations" Relationship="MalalimModel.FK_ActivationUserInformation_Countries" FromRole="Country" ToRole="ActivationUserInformation" />
+    <NavigationProperty Name="Cities" Relationship="MalalimModel.FK_Cities_Countries" FromRole="Country" ToRole="City" />
   </EntityType>
   <EntityType Name="Coupon">
     <Key>
       <PropertyRef Name="CouponId" />
     </Key>
     <Property Name="CouponId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Code" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="ProductId" Type="Int32" Nullable="false" />
-    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
     <Property Name="IsWin" Type="Boolean" />
     <Property Name="IsDrawed" Type="Boolean" Nullable="false" />
-    <Property Name="CreatedOn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="CreatedOn" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="LockedTill" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="DrawedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="OrderCoupons" Relationship="Self.FK_OrderCoupons_Coupon" FromRole="Coupon" ToRole="OrderCoupons" />
     <NavigationProperty Name="Product" Relationship="MalalimModel.FK_Coupon_Product" FromRole="Coupon" ToRole="Product" />
+    <NavigationProperty Name="OrderCoupons" Relationship="MalalimModel.FK_OrderCoupons_Coupon" FromRole="Coupon" ToRole="OrderCoupon" />
   </EntityType>
   <EntityType Name="Gender">
     <Key>
       <PropertyRef Name="GenderId" />
     </Key>
     <Property Name="GenderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="ActivationUserInformations" Relationship="Self.FK_ActivationUserInformation_Gender" FromRole="Gender" ToRole="ActivationUserInformation" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ActivationUserInformations" Relationship="MalalimModel.FK_ActivationUserInformation_Gender" FromRole="Gender" ToRole="ActivationUserInformation" />
   </EntityType>
   <EntityType Name="Intrest">
     <Key>
       <PropertyRef Name="IntrestId" />
     </Key>
     <Property Name="IntrestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="UserIntrests" Relationship="Self.FK_UserIntrests_Intrests" FromRole="Intrests" ToRole="UserIntrests" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserIntrests" Relationship="MalalimModel.FK_UserIntrests_Intrests" FromRole="Intrest" ToRole="UserIntrest" />
   </EntityType>
   <EntityType Name="OrderCoupon">
     <Key>
@@ -80,22 +192,22 @@
     <Property Name="OrderCouponsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CouponId" Type="Int64" Nullable="false" />
     <Property Name="OrderId" Type="Int64" Nullable="false" />
-    <NavigationProperty Name="Coupon" Relationship="Self.FK_OrderCoupons_Coupon" FromRole="OrderCoupons" ToRole="Coupon" />
-    <NavigationProperty Name="Order" Relationship="Self.FK_OrderCoupons_Orders" FromRole="OrderCoupons" ToRole="Orders" />
+    <NavigationProperty Name="Coupon" Relationship="MalalimModel.FK_OrderCoupons_Coupon" FromRole="OrderCoupon" ToRole="Coupon" />
+    <NavigationProperty Name="Order" Relationship="MalalimModel.FK_OrderCoupons_Orders" FromRole="OrderCoupon" ToRole="Order" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
       <PropertyRef Name="OrderId" />
     </Key>
     <Property Name="OrderId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CouponsNumber" Type="Int32" Nullable="false" />
-    <Property Name="CouponPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="CreatedOn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="OrderCoupons" Relationship="Self.FK_OrderCoupons_Orders" FromRole="Orders" ToRole="OrderCoupons" />
-    <NavigationProperty Name="Payments" Relationship="Self.FK_Payment_Orders" FromRole="Orders" ToRole="Payment" />
+    <Property Name="CouponPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="OrderCoupons" Relationship="MalalimModel.FK_OrderCoupons_Orders" FromRole="Order" ToRole="OrderCoupon" />
+    <NavigationProperty Name="Payments" Relationship="MalalimModel.FK_Payment_Orders" FromRole="Order" ToRole="Payment" />
   </EntityType>
   <EntityType Name="Payment">
     <Key>
@@ -105,449 +217,35 @@
     <Property Name="PaymentMethodId" Type="Int32" Nullable="false" />
     <Property Name="PaymentStatusId" Type="Int32" Nullable="false" />
     <Property Name="OrderId" Type="Int64" Nullable="false" />
-    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="ModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="Order" Relationship="Self.FK_Payment_Orders" FromRole="Payment" ToRole="Orders" />
-    <NavigationProperty Name="PaymentMethod" Relationship="Self.FK_Payment_PaymentMethod" FromRole="Payment" ToRole="PaymentMethod" />
-    <NavigationProperty Name="PaymentStatu" Relationship="Self.FK_Payment_PaymentStatus" FromRole="Payment" ToRole="PaymentStatus" />
+    <NavigationProperty Name="Order" Relationship="MalalimModel.FK_Payment_Orders" FromRole="Payment" ToRole="Order" />
+    <NavigationProperty Name="PaymentMethod" Relationship="MalalimModel.FK_Payment_PaymentMethod" FromRole="Payment" ToRole="PaymentMethod" />
+    <NavigationProperty Name="PaymentStatu" Relationship="MalalimModel.FK_Payment_PaymentStatus" FromRole="Payment" ToRole="PaymentStatu" />
   </EntityType>
   <EntityType Name="PaymentMethod">
     <Key>
       <PropertyRef Name="PaymentMethodId" />
     </Key>
     <Property Name="PaymentMethodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ExpiryDateRange" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Payments" Relationship="Self.FK_Payment_PaymentMethod" FromRole="PaymentMethod" ToRole="Payment" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ExpiryDateRange" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Payments" Relationship="MalalimModel.FK_Payment_PaymentMethod" FromRole="PaymentMethod" ToRole="Payment" />
   </EntityType>
   <EntityType Name="PaymentStatu">
     <Key>
       <PropertyRef Name="PaymentStatusId" />
     </Key>
     <Property Name="PaymentStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Code" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Payments" Relationship="Self.FK_Payment_PaymentStatus" FromRole="PaymentStatus" ToRole="Payment" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Payments" Relationship="MalalimModel.FK_Payment_PaymentStatus" FromRole="PaymentStatu" ToRole="Payment" />
   </EntityType>
-  <EntityType Name="tbl_AdminRoles">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="tbl_AdminUsers" Relationship="Self.tbl_AdminUserRoles" FromRole="tbl_AdminRoles" ToRole="tbl_AdminUsers" />
-  </EntityType>
-  <EntityType Name="tbl_AdminUserClaims">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tbl_AdminUsers" Relationship="Self.FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId" FromRole="tbl_AdminUserClaims" ToRole="tbl_AdminUsers" />
-  </EntityType>
-  <EntityType Name="tbl_AdminUserLogins">
-    <Key>
-      <PropertyRef Name="LoginProvider" />
-      <PropertyRef Name="ProviderKey" />
-      <PropertyRef Name="UserId" />
-    </Key>
-    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="tbl_AdminUsers" Relationship="Self.FK_dbo_tbl_AdminUserLogins_dbo_tbl_AdminUsers_UserId" FromRole="tbl_AdminUserLogins" ToRole="tbl_AdminUsers" />
-  </EntityType>
-  <EntityType Name="tbl_AdminUsers">
-    <Key>
-      <PropertyRef Name="UserId" />
-    </Key>
-    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="tbl_AdminUserClaims" Relationship="Self.FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId" FromRole="tbl_AdminUsers" ToRole="tbl_AdminUserClaims" />
-    <NavigationProperty Name="tbl_AdminUserLogins" Relationship="Self.FK_dbo_tbl_AdminUserLogins_dbo_tbl_AdminUsers_UserId" FromRole="tbl_AdminUsers" ToRole="tbl_AdminUserLogins" />
-    <NavigationProperty Name="tbl_AdminRoles" Relationship="Self.tbl_AdminUserRoles" FromRole="tbl_AdminUsers" ToRole="tbl_AdminRoles" />
-    <NavigationProperty Name="Products" Relationship="MalalimModel.FK_Product_tbl_AdminUsers" FromRole="tbl_AdminUsers" ToRole="Product" />
-  </EntityType>
-  <EntityType Name="tbl_ClientRoles">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="tbl_ClientUsers" Relationship="Self.tbl_ClientUserRoles" FromRole="tbl_ClientRoles" ToRole="tbl_ClientUsers" />
-  </EntityType>
-  <EntityType Name="tbl_ClientUserClaims">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tbl_ClientUsers" Relationship="Self.FK_dbo_tbl_ClientUserClaims_dbo_tbl_ClientUsers_UserId" FromRole="tbl_ClientUserClaims" ToRole="tbl_ClientUsers" />
-  </EntityType>
-  <EntityType Name="tbl_ClientUserLogins">
-    <Key>
-      <PropertyRef Name="LoginProvider" />
-      <PropertyRef Name="ProviderKey" />
-      <PropertyRef Name="UserId" />
-    </Key>
-    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="tbl_ClientUsers" Relationship="Self.FK_dbo_tbl_ClientUserLogins_dbo_tbl_ClientUsers_UserId" FromRole="tbl_ClientUserLogins" ToRole="tbl_ClientUsers" />
-  </EntityType>
-  <EntityType Name="tbl_ClientUsers">
-    <Key>
-      <PropertyRef Name="UserId" />
-    </Key>
-    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="ActivationUserInformations" Relationship="Self.FK_ActivationUserInformation_tbl_ClientUsers" FromRole="tbl_ClientUsers" ToRole="ActivationUserInformation" />
-    <NavigationProperty Name="tbl_ClientUserClaims" Relationship="Self.FK_dbo_tbl_ClientUserClaims_dbo_tbl_ClientUsers_UserId" FromRole="tbl_ClientUsers" ToRole="tbl_ClientUserClaims" />
-    <NavigationProperty Name="tbl_ClientUserLogins" Relationship="Self.FK_dbo_tbl_ClientUserLogins_dbo_tbl_ClientUsers_UserId" FromRole="tbl_ClientUsers" ToRole="tbl_ClientUserLogins" />
-    <NavigationProperty Name="tbl_ClientRoles" Relationship="Self.tbl_ClientUserRoles" FromRole="tbl_ClientUsers" ToRole="tbl_ClientRoles" />
-  </EntityType>
-  <EntityType Name="UserIntrest">
-    <Key>
-      <PropertyRef Name="UserIntrestsId" />
-    </Key>
-    <Property Name="UserIntrestsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="IntrestId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Intrest" Relationship="Self.FK_UserIntrests_Intrests" FromRole="UserIntrests" ToRole="Intrests" />
-  </EntityType>
-  <EntityType Name="Wishlist">
-    <Key>
-      <PropertyRef Name="WishlistId" />
-    </Key>
-    <Property Name="WishlistId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProductId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="IsLiked" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <Association Name="FK_ActivationUserInformation_Cities">
-    <End Role="Cities" Type="Self.City" Multiplicity="1" />
-    <End Role="ActivationUserInformation" Type="Self.ActivationUserInformation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cities">
-        <PropertyRef Name="CityId" />
-      </Principal>
-      <Dependent Role="ActivationUserInformation">
-        <PropertyRef Name="CityId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ActivationUserInformation_Countries">
-    <End Role="Countries" Type="Self.Country" Multiplicity="1" />
-    <End Role="ActivationUserInformation" Type="Self.ActivationUserInformation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Countries">
-        <PropertyRef Name="CountryId" />
-      </Principal>
-      <Dependent Role="ActivationUserInformation">
-        <PropertyRef Name="CountryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ActivationUserInformation_Gender">
-    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
-    <End Role="ActivationUserInformation" Type="Self.ActivationUserInformation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Gender">
-        <PropertyRef Name="GenderId" />
-      </Principal>
-      <Dependent Role="ActivationUserInformation">
-        <PropertyRef Name="GenderId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ActivationUserInformation_tbl_ClientUsers">
-    <End Role="tbl_ClientUsers" Type="Self.tbl_ClientUsers" Multiplicity="0..1" />
-    <End Role="ActivationUserInformation" Type="Self.ActivationUserInformation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_ClientUsers">
-        <PropertyRef Name="UserId" />
-      </Principal>
-      <Dependent Role="ActivationUserInformation">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Cities_Countries">
-    <End Role="Countries" Type="Self.Country" Multiplicity="1" />
-    <End Role="Cities" Type="Self.City" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Countries">
-        <PropertyRef Name="CountryId" />
-      </Principal>
-      <Dependent Role="Cities">
-        <PropertyRef Name="CountryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OrderCoupons_Coupon">
-    <End Role="Coupon" Type="Self.Coupon" Multiplicity="1" />
-    <End Role="OrderCoupons" Type="Self.OrderCoupon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Coupon">
-        <PropertyRef Name="CouponId" />
-      </Principal>
-      <Dependent Role="OrderCoupons">
-        <PropertyRef Name="CouponId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_UserIntrests_Intrests">
-    <End Role="Intrests" Type="Self.Intrest" Multiplicity="1" />
-    <End Role="UserIntrests" Type="Self.UserIntrest" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Intrests">
-        <PropertyRef Name="IntrestId" />
-      </Principal>
-      <Dependent Role="UserIntrests">
-        <PropertyRef Name="IntrestId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OrderCoupons_Orders">
-    <End Role="Orders" Type="Self.Order" Multiplicity="1" />
-    <End Role="OrderCoupons" Type="Self.OrderCoupon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Orders">
-        <PropertyRef Name="OrderId" />
-      </Principal>
-      <Dependent Role="OrderCoupons">
-        <PropertyRef Name="OrderId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Payment_Orders">
-    <End Role="Orders" Type="Self.Order" Multiplicity="1" />
-    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Orders">
-        <PropertyRef Name="OrderId" />
-      </Principal>
-      <Dependent Role="Payment">
-        <PropertyRef Name="OrderId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Payment_PaymentMethod">
-    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
-    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PaymentMethod">
-        <PropertyRef Name="PaymentMethodId" />
-      </Principal>
-      <Dependent Role="Payment">
-        <PropertyRef Name="PaymentMethodId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Payment_PaymentStatus">
-    <End Role="PaymentStatus" Type="Self.PaymentStatu" Multiplicity="1" />
-    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PaymentStatus">
-        <PropertyRef Name="PaymentStatusId" />
-      </Principal>
-      <Dependent Role="Payment">
-        <PropertyRef Name="PaymentStatusId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId">
-    <End Role="tbl_AdminUsers" Type="Self.tbl_AdminUsers" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="tbl_AdminUserClaims" Type="Self.tbl_AdminUserClaims" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_AdminUsers">
-        <PropertyRef Name="UserId" />
-      </Principal>
-      <Dependent Role="tbl_AdminUserClaims">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_dbo_tbl_AdminUserLogins_dbo_tbl_AdminUsers_UserId">
-    <End Role="tbl_AdminUsers" Type="Self.tbl_AdminUsers" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="tbl_AdminUserLogins" Type="Self.tbl_AdminUserLogins" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_AdminUsers">
-        <PropertyRef Name="UserId" />
-      </Principal>
-      <Dependent Role="tbl_AdminUserLogins">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_dbo_tbl_ClientUserClaims_dbo_tbl_ClientUsers_UserId">
-    <End Role="tbl_ClientUsers" Type="Self.tbl_ClientUsers" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="tbl_ClientUserClaims" Type="Self.tbl_ClientUserClaims" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_ClientUsers">
-        <PropertyRef Name="UserId" />
-      </Principal>
-      <Dependent Role="tbl_ClientUserClaims">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_dbo_tbl_ClientUserLogins_dbo_tbl_ClientUsers_UserId">
-    <End Role="tbl_ClientUsers" Type="Self.tbl_ClientUsers" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="tbl_ClientUserLogins" Type="Self.tbl_ClientUserLogins" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_ClientUsers">
-        <PropertyRef Name="UserId" />
-      </Principal>
-      <Dependent Role="tbl_ClientUserLogins">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="tbl_AdminUserRoles">
-    <End Role="tbl_AdminRoles" Type="Self.tbl_AdminRoles" Multiplicity="*" />
-    <End Role="tbl_AdminUsers" Type="Self.tbl_AdminUsers" Multiplicity="*" />
-  </Association>
-  <Association Name="tbl_ClientUserRoles">
-    <End Role="tbl_ClientRoles" Type="Self.tbl_ClientRoles" Multiplicity="*" />
-    <End Role="tbl_ClientUsers" Type="Self.tbl_ClientUsers" Multiplicity="*" />
-  </Association>
-  <EntityContainer Name="MalalimEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="ActivationUserInformations" EntityType="Self.ActivationUserInformation" />
-    <EntitySet Name="Cities" EntityType="Self.City" />
-    <EntitySet Name="Countries" EntityType="Self.Country" />
-    <EntitySet Name="Coupons" EntityType="Self.Coupon" />
-    <EntitySet Name="Genders" EntityType="Self.Gender" />
-    <EntitySet Name="Intrests" EntityType="Self.Intrest" />
-    <EntitySet Name="OrderCoupons" EntityType="Self.OrderCoupon" />
-    <EntitySet Name="Orders" EntityType="Self.Order" />
-    <EntitySet Name="Payments" EntityType="Self.Payment" />
-    <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
-    <EntitySet Name="PaymentStatus" EntityType="Self.PaymentStatu" />
-    <EntitySet Name="tbl_AdminRoles" EntityType="Self.tbl_AdminRoles" />
-    <EntitySet Name="tbl_AdminUserClaims" EntityType="Self.tbl_AdminUserClaims" />
-    <EntitySet Name="tbl_AdminUserLogins" EntityType="Self.tbl_AdminUserLogins" />
-    <EntitySet Name="tbl_AdminUsers" EntityType="Self.tbl_AdminUsers" />
-    <EntitySet Name="tbl_ClientRoles" EntityType="Self.tbl_ClientRoles" />
-    <EntitySet Name="tbl_ClientUserClaims" EntityType="Self.tbl_ClientUserClaims" />
-    <EntitySet Name="tbl_ClientUserLogins" EntityType="Self.tbl_ClientUserLogins" />
-    <EntitySet Name="tbl_ClientUsers" EntityType="Self.tbl_ClientUsers" />
-    <EntitySet Name="UserIntrests" EntityType="Self.UserIntrest" />
-    <EntitySet Name="Wishlists" EntityType="Self.Wishlist" />
-    <AssociationSet Name="FK_ActivationUserInformation_Cities" Association="Self.FK_ActivationUserInformation_Cities">
-      <End Role="Cities" EntitySet="Cities" />
-      <End Role="ActivationUserInformation" EntitySet="ActivationUserInformations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ActivationUserInformation_Countries" Association="Self.FK_ActivationUserInformation_Countries">
-      <End Role="Countries" EntitySet="Countries" />
-      <End Role="ActivationUserInformation" EntitySet="ActivationUserInformations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ActivationUserInformation_Gender" Association="Self.FK_ActivationUserInformation_Gender">
-      <End Role="Gender" EntitySet="Genders" />
-      <End Role="ActivationUserInformation" EntitySet="ActivationUserInformations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ActivationUserInformation_tbl_ClientUsers" Association="Self.FK_ActivationUserInformation_tbl_ClientUsers">
-      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
-      <End Role="ActivationUserInformation" EntitySet="ActivationUserInformations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
-      <End Role="Countries" EntitySet="Countries" />
-      <End Role="Cities" EntitySet="Cities" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderCoupons_Coupon" Association="Self.FK_OrderCoupons_Coupon">
-      <End Role="Coupon" EntitySet="Coupons" />
-      <End Role="OrderCoupons" EntitySet="OrderCoupons" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserIntrests_Intrests" Association="Self.FK_UserIntrests_Intrests">
-      <End Role="Intrests" EntitySet="Intrests" />
-      <End Role="UserIntrests" EntitySet="UserIntrests" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderCoupons_Orders" Association="Self.FK_OrderCoupons_Orders">
-      <End Role="Orders" EntitySet="Orders" />
-      <End Role="OrderCoupons" EntitySet="OrderCoupons" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Payment_Orders" Association="Self.FK_Payment_Orders">
-      <End Role="Orders" EntitySet="Orders" />
-      <End Role="Payment" EntitySet="Payments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Payment_PaymentMethod" Association="Self.FK_Payment_PaymentMethod">
-      <End Role="PaymentMethod" EntitySet="PaymentMethods" />
-      <End Role="Payment" EntitySet="Payments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Payment_PaymentStatus" Association="Self.FK_Payment_PaymentStatus">
-      <End Role="PaymentStatus" EntitySet="PaymentStatus" />
-      <End Role="Payment" EntitySet="Payments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId" Association="Self.FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId">
-      <End Role="tbl_AdminUsers" EntitySet="tbl_AdminUsers" />
-      <End Role="tbl_AdminUserClaims" EntitySet="tbl_AdminUserClaims" />
-    </AssociationSet>
-    <AssociationSet Name="FK_dbo_tbl_AdminUserLogins_dbo_tbl_AdminUsers_UserId" Association="Self.FK_dbo_tbl_AdminUserLogins_dbo_tbl_AdminUsers_UserId">
-      <End Role="tbl_AdminUsers" EntitySet="tbl_AdminUsers" />
-      <End Role="tbl_AdminUserLogins" EntitySet="tbl_AdminUserLogins" />
-    </AssociationSet>
-    <AssociationSet Name="FK_dbo_tbl_ClientUserClaims_dbo_tbl_ClientUsers_UserId" Association="Self.FK_dbo_tbl_ClientUserClaims_dbo_tbl_ClientUsers_UserId">
-      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
-      <End Role="tbl_ClientUserClaims" EntitySet="tbl_ClientUserClaims" />
-    </AssociationSet>
-    <AssociationSet Name="FK_dbo_tbl_ClientUserLogins_dbo_tbl_ClientUsers_UserId" Association="Self.FK_dbo_tbl_ClientUserLogins_dbo_tbl_ClientUsers_UserId">
-      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
-      <End Role="tbl_ClientUserLogins" EntitySet="tbl_ClientUserLogins" />
-    </AssociationSet>
-    <AssociationSet Name="tbl_AdminUserRoles" Association="Self.tbl_AdminUserRoles">
-      <End Role="tbl_AdminRoles" EntitySet="tbl_AdminRoles" />
-      <End Role="tbl_AdminUsers" EntitySet="tbl_AdminUsers" />
-    </AssociationSet>
-    <AssociationSet Name="tbl_ClientUserRoles" Association="Self.tbl_ClientUserRoles">
-      <End Role="tbl_ClientRoles" EntitySet="tbl_ClientRoles" />
-      <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
-    </AssociationSet>
-    <EntitySet Name="Products" EntityType="MalalimModel.Product" />
-    <AssociationSet Name="FK_Coupon_Product" Association="MalalimModel.FK_Coupon_Product">
-      <End Role="Product" EntitySet="Products" />
-      <End Role="Coupon" EntitySet="Coupons" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Product_tbl_AdminUsers" Association="MalalimModel.FK_Product_tbl_AdminUsers">
-      <End Role="tbl_AdminUsers" EntitySet="tbl_AdminUsers" />
-      <End Role="Product" EntitySet="Products" />
-    </AssociationSet>
-  </EntityContainer>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="ProductId" />
@@ -570,7 +268,181 @@
     <Property Name="IsVisible" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Coupons" Relationship="MalalimModel.FK_Coupon_Product" FromRole="Product" ToRole="Coupon" />
     <NavigationProperty Name="tbl_AdminUsers" Relationship="MalalimModel.FK_Product_tbl_AdminUsers" FromRole="Product" ToRole="tbl_AdminUsers" />
+    <NavigationProperty Name="Wishlists" Relationship="MalalimModel.FK_Wishlist_Product" FromRole="Product" ToRole="Wishlist" />
   </EntityType>
+  <EntityType Name="tbl_AdminRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_AdminUsers" Relationship="MalalimModel.tbl_AdminUserRoles" FromRole="tbl_AdminRoles" ToRole="tbl_AdminUsers" />
+  </EntityType>
+  <EntityType Name="tbl_AdminUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_AdminUsers" Relationship="MalalimModel.FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId" FromRole="tbl_AdminUserClaims" ToRole="tbl_AdminUsers" />
+  </EntityType>
+  <EntityType Name="tbl_AdminUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_AdminUsers" Relationship="MalalimModel.FK_dbo_tbl_AdminUserLogins_dbo_tbl_AdminUsers_UserId" FromRole="tbl_AdminUserLogins" ToRole="tbl_AdminUsers" />
+  </EntityType>
+  <EntityType Name="tbl_AdminUsers">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="MalalimModel.FK_Product_tbl_AdminUsers" FromRole="tbl_AdminUsers" ToRole="Product" />
+    <NavigationProperty Name="tbl_AdminUserClaims" Relationship="MalalimModel.FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId" FromRole="tbl_AdminUsers" ToRole="tbl_AdminUserClaims" />
+    <NavigationProperty Name="tbl_AdminUserLogins" Relationship="MalalimModel.FK_dbo_tbl_AdminUserLogins_dbo_tbl_AdminUsers_UserId" FromRole="tbl_AdminUsers" ToRole="tbl_AdminUserLogins" />
+    <NavigationProperty Name="tbl_AdminRoles" Relationship="MalalimModel.tbl_AdminUserRoles" FromRole="tbl_AdminUsers" ToRole="tbl_AdminRoles" />
+  </EntityType>
+  <EntityType Name="tbl_ClientRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_ClientUsers" Relationship="MalalimModel.tbl_ClientUserRoles" FromRole="tbl_ClientRoles" ToRole="tbl_ClientUsers" />
+  </EntityType>
+  <EntityType Name="tbl_ClientUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_ClientUsers" Relationship="MalalimModel.FK_dbo_tbl_ClientUserClaims_dbo_tbl_ClientUsers_UserId" FromRole="tbl_ClientUserClaims" ToRole="tbl_ClientUsers" />
+  </EntityType>
+  <EntityType Name="tbl_ClientUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_ClientUsers" Relationship="MalalimModel.FK_dbo_tbl_ClientUserLogins_dbo_tbl_ClientUsers_UserId" FromRole="tbl_ClientUserLogins" ToRole="tbl_ClientUsers" />
+  </EntityType>
+  <EntityType Name="tbl_ClientUsers">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ActivationUserInformations" Relationship="MalalimModel.FK_ActivationUserInformation_tbl_ClientUsers" FromRole="tbl_ClientUsers" ToRole="ActivationUserInformation" />
+    <NavigationProperty Name="tbl_ClientUserClaims" Relationship="MalalimModel.FK_dbo_tbl_ClientUserClaims_dbo_tbl_ClientUsers_UserId" FromRole="tbl_ClientUsers" ToRole="tbl_ClientUserClaims" />
+    <NavigationProperty Name="tbl_ClientUserLogins" Relationship="MalalimModel.FK_dbo_tbl_ClientUserLogins_dbo_tbl_ClientUsers_UserId" FromRole="tbl_ClientUsers" ToRole="tbl_ClientUserLogins" />
+    <NavigationProperty Name="Wishlists" Relationship="MalalimModel.FK_Wishlist_tbl_ClientUsers" FromRole="tbl_ClientUsers" ToRole="Wishlist" />
+    <NavigationProperty Name="tbl_ClientRoles" Relationship="MalalimModel.tbl_ClientUserRoles" FromRole="tbl_ClientUsers" ToRole="tbl_ClientRoles" />
+    <NavigationProperty Name="UserIntrests" Relationship="MalalimModel.FK_UserIntrests_tbl_ClientUsers" FromRole="tbl_ClientUsers" ToRole="UserIntrest" />
+  </EntityType>
+  <EntityType Name="Wishlist">
+    <Key>
+      <PropertyRef Name="WishlistId" />
+    </Key>
+    <Property Name="WishlistId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IsLiked" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="MalalimModel.FK_Wishlist_Product" FromRole="Wishlist" ToRole="Product" />
+    <NavigationProperty Name="tbl_ClientUsers" Relationship="MalalimModel.FK_Wishlist_tbl_ClientUsers" FromRole="Wishlist" ToRole="tbl_ClientUsers" />
+  </EntityType>
+  <Association Name="FK_ActivationUserInformation_Cities">
+    <End Type="MalalimModel.City" Role="City" Multiplicity="1" />
+    <End Type="MalalimModel.ActivationUserInformation" Role="ActivationUserInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="ActivationUserInformation">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivationUserInformation_Countries">
+    <End Type="MalalimModel.Country" Role="Country" Multiplicity="1" />
+    <End Type="MalalimModel.ActivationUserInformation" Role="ActivationUserInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="ActivationUserInformation">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivationUserInformation_Gender">
+    <End Type="MalalimModel.Gender" Role="Gender" Multiplicity="1" />
+    <End Type="MalalimModel.ActivationUserInformation" Role="ActivationUserInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderId" />
+      </Principal>
+      <Dependent Role="ActivationUserInformation">
+        <PropertyRef Name="GenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActivationUserInformation_tbl_ClientUsers">
+    <End Type="MalalimModel.tbl_ClientUsers" Role="tbl_ClientUsers" Multiplicity="0..1" />
+    <End Type="MalalimModel.ActivationUserInformation" Role="ActivationUserInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ClientUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="ActivationUserInformation">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cities_Countries">
+    <End Type="MalalimModel.Country" Role="Country" Multiplicity="1" />
+    <End Type="MalalimModel.City" Role="City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Coupon_Product">
     <End Type="MalalimModel.Product" Role="Product" Multiplicity="1" />
     <End Type="MalalimModel.Coupon" Role="Coupon" Multiplicity="*" />
@@ -583,6 +455,66 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_OrderCoupons_Coupon">
+    <End Type="MalalimModel.Coupon" Role="Coupon" Multiplicity="1" />
+    <End Type="MalalimModel.OrderCoupon" Role="OrderCoupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="CouponId" />
+      </Principal>
+      <Dependent Role="OrderCoupon">
+        <PropertyRef Name="CouponId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderCoupons_Orders">
+    <End Type="MalalimModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="MalalimModel.OrderCoupon" Role="OrderCoupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderCoupon">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Orders">
+    <End Type="MalalimModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="MalalimModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_PaymentMethod">
+    <End Type="MalalimModel.PaymentMethod" Role="PaymentMethod" Multiplicity="1" />
+    <End Type="MalalimModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="PaymentMethodId" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="PaymentMethodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_PaymentStatus">
+    <End Type="MalalimModel.PaymentStatu" Role="PaymentStatu" Multiplicity="1" />
+    <End Type="MalalimModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentStatu">
+        <PropertyRef Name="PaymentStatusId" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="PaymentStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Product_tbl_AdminUsers">
     <End Type="MalalimModel.tbl_AdminUsers" Role="tbl_AdminUsers" Multiplicity="1" />
     <End Type="MalalimModel.Product" Role="Product" Multiplicity="*" />
@@ -592,6 +524,128 @@
       </Principal>
       <Dependent Role="Product">
         <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wishlist_Product">
+    <End Type="MalalimModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="MalalimModel.Wishlist" Role="Wishlist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Wishlist">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId">
+    <End Type="MalalimModel.tbl_AdminUsers" Role="tbl_AdminUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MalalimModel.tbl_AdminUserClaims" Role="tbl_AdminUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_AdminUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_AdminUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbl_AdminUserLogins_dbo_tbl_AdminUsers_UserId">
+    <End Type="MalalimModel.tbl_AdminUsers" Role="tbl_AdminUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MalalimModel.tbl_AdminUserLogins" Role="tbl_AdminUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_AdminUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_AdminUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbl_ClientUserClaims_dbo_tbl_ClientUsers_UserId">
+    <End Type="MalalimModel.tbl_ClientUsers" Role="tbl_ClientUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MalalimModel.tbl_ClientUserClaims" Role="tbl_ClientUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ClientUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_ClientUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_tbl_ClientUserLogins_dbo_tbl_ClientUsers_UserId">
+    <End Type="MalalimModel.tbl_ClientUsers" Role="tbl_ClientUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MalalimModel.tbl_ClientUserLogins" Role="tbl_ClientUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ClientUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tbl_ClientUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wishlist_tbl_ClientUsers">
+    <End Type="MalalimModel.tbl_ClientUsers" Role="tbl_ClientUsers" Multiplicity="1" />
+    <End Type="MalalimModel.Wishlist" Role="Wishlist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ClientUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Wishlist">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tbl_AdminUserRoles">
+    <End Type="MalalimModel.tbl_AdminRoles" Role="tbl_AdminRoles" Multiplicity="*" />
+    <End Type="MalalimModel.tbl_AdminUsers" Role="tbl_AdminUsers" Multiplicity="*" />
+  </Association>
+  <Association Name="tbl_ClientUserRoles">
+    <End Type="MalalimModel.tbl_ClientRoles" Role="tbl_ClientRoles" Multiplicity="*" />
+    <End Type="MalalimModel.tbl_ClientUsers" Role="tbl_ClientUsers" Multiplicity="*" />
+  </Association>
+  <EntityType Name="UserIntrest">
+    <Key>
+      <PropertyRef Name="UserIntrestsId" />
+    </Key>
+    <Property Name="UserIntrestsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IntrestId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Intrest" Relationship="MalalimModel.FK_UserIntrests_Intrests" FromRole="UserIntrest" ToRole="Intrest" />
+    <NavigationProperty Name="tbl_ClientUsers" Relationship="MalalimModel.FK_UserIntrests_tbl_ClientUsers" FromRole="UserIntrest" ToRole="tbl_ClientUsers" />
+  </EntityType>
+  <Association Name="FK_UserIntrests_Intrests">
+    <End Type="MalalimModel.Intrest" Role="Intrest" Multiplicity="1" />
+    <End Type="MalalimModel.UserIntrest" Role="UserIntrest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Intrest">
+        <PropertyRef Name="IntrestId" />
+      </Principal>
+      <Dependent Role="UserIntrest">
+        <PropertyRef Name="IntrestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserIntrests_tbl_ClientUsers">
+    <End Type="MalalimModel.tbl_ClientUsers" Role="tbl_ClientUsers" Multiplicity="1" />
+    <End Type="MalalimModel.UserIntrest" Role="UserIntrest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_ClientUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserIntrest">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
