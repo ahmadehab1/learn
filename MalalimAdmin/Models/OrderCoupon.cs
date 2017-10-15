@@ -18,7 +18,7 @@ namespace MalalimAdmin.Models
         public long CouponId { get; set; }
         public long OrderId { get; set; }
     
-        public virtual Coupon Coupon { get; set; }
         public virtual Order Order { get; set; }
+        public virtual Coupon Coupon { get; set; }
     }
 }

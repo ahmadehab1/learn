@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="MalalimModel.ActivationUserInformation" Width="1.5" PointX="5.25" PointY="5.5" />
         <EntityTypeShape EntityType="MalalimModel.City" Width="1.5" PointX="3" PointY="2.375" />
         <EntityTypeShape EntityType="MalalimModel.Country" Width="1.5" PointX="0.75" PointY="2.375" />
-        <EntityTypeShape EntityType="MalalimModel.Coupon" Width="1.5" PointX="10.75" PointY="6.75" />
         <EntityTypeShape EntityType="MalalimModel.Gender" Width="1.5" PointX="3" PointY="11" />
         <EntityTypeShape EntityType="MalalimModel.Intrest" Width="1.5" PointX="9.75" PointY="1" />
         <EntityTypeShape EntityType="MalalimModel.OrderCoupon" Width="1.5" PointX="13" PointY="12.375" />
@@ -16,7 +15,6 @@
         <EntityTypeShape EntityType="MalalimModel.Payment" Width="1.5" PointX="10" PointY="11.5" />
         <EntityTypeShape EntityType="MalalimModel.PaymentMethod" Width="1.5" PointX="7.75" PointY="3.25" />
         <EntityTypeShape EntityType="MalalimModel.PaymentStatu" Width="1.5" PointX="7.75" PointY="23.75" />
-        <EntityTypeShape EntityType="MalalimModel.Product" Width="1.5" PointX="6" PointY="18.125" />
         <EntityTypeShape EntityType="MalalimModel.tbl_AdminRoles" Width="1.5" PointX="1.5" PointY="19.625" />
         <EntityTypeShape EntityType="MalalimModel.tbl_AdminUserClaims" Width="1.5" PointX="6" PointY="27.25" />
         <EntityTypeShape EntityType="MalalimModel.tbl_AdminUserLogins" Width="1.5" PointX="6" PointY="30" />
@@ -31,14 +29,10 @@
         <AssociationConnector Association="MalalimModel.FK_ActivationUserInformation_Gender" />
         <AssociationConnector Association="MalalimModel.FK_ActivationUserInformation_tbl_ClientUsers" />
         <AssociationConnector Association="MalalimModel.FK_Cities_Countries" />
-        <AssociationConnector Association="MalalimModel.FK_Coupon_Product" />
-        <AssociationConnector Association="MalalimModel.FK_OrderCoupons_Coupon" />
         <AssociationConnector Association="MalalimModel.FK_OrderCoupons_Orders" />
         <AssociationConnector Association="MalalimModel.FK_Payment_Orders" />
         <AssociationConnector Association="MalalimModel.FK_Payment_PaymentMethod" />
         <AssociationConnector Association="MalalimModel.FK_Payment_PaymentStatus" />
-        <AssociationConnector Association="MalalimModel.FK_Product_tbl_AdminUsers" />
-        <AssociationConnector Association="MalalimModel.FK_Wishlist_Product" />
         <AssociationConnector Association="MalalimModel.FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId" />
         <AssociationConnector Association="MalalimModel.FK_dbo_tbl_AdminUserLogins_dbo_tbl_AdminUsers_UserId" />
         <AssociationConnector Association="MalalimModel.FK_dbo_tbl_ClientUserClaims_dbo_tbl_ClientUsers_UserId" />
@@ -49,7 +43,13 @@
         <EntityTypeShape EntityType="MalalimModel.UserIntrest" Width="1.5" PointX="12" PointY="3.375" />
         <AssociationConnector Association="MalalimModel.FK_UserIntrests_Intrests" />
         <AssociationConnector Association="MalalimModel.FK_UserIntrests_tbl_ClientUsers" />
-      </Diagram>
+        <EntityTypeShape EntityType="MalalimModel.Product" Width="1.5" PointX="6" PointY="33" />
+        <AssociationConnector Association="MalalimModel.FK_Product_tbl_AdminUsers" />
+        <AssociationConnector Association="MalalimModel.FK_Wishlist_Product" />
+        <EntityTypeShape EntityType="MalalimModel.Coupon" Width="1.5" PointX="8.25" PointY="33.75" />
+        <AssociationConnector Association="MalalimModel.FK_Coupon_Product" />
+        <AssociationConnector Association="MalalimModel.FK_OrderCoupons_Coupon" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

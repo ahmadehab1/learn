@@ -17,8 +17,8 @@ namespace MalalimAdmin.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.Coupons = new HashSet<Coupon>();
             this.Wishlists = new HashSet<Wishlist>();
+            this.Coupons = new HashSet<Coupon>();
         }
     
         public int ProductId { get; set; }
@@ -37,11 +37,12 @@ namespace MalalimAdmin.Models
         public int MaxCouponsPerOrder { get; set; }
         public string WinnerCouponId { get; set; }
         public bool IsVisible { get; set; }
+        public int CouponPrice { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Coupon> Coupons { get; set; }
         public virtual tbl_AdminUsers tbl_AdminUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Wishlist> Wishlists { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Coupon> Coupons { get; set; }
     }
 }

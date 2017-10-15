@@ -14,7 +14,7 @@
         <div class="col-lg-12">
             <div class="box">
                 <div class="box-body">
-                    @if(Model.FirstOrDefault() == null )
+                    @if (Model.FirstOrDefault() == null)
                     {
                         <h2>No Products Found</h2>
                     }
@@ -32,7 +32,7 @@
                                     @Html.DisplayNameFor(model => model.IsFeatured)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.CreatedOn)
+                                    @Html.DisplayNameFor(model => model.IsVisible)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.ExpiryDate)
@@ -42,6 +42,9 @@
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.RemainingCoupons)
+                                </th>
+                                <th>
+                                    Coupons
                                 </th>
                                 <th></th>
                             </tr>
@@ -53,14 +56,28 @@
                                         @Html.DisplayFor(modelItem => item.Name)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Price)
+                                        $ @Html.DisplayFor(modelItem => item.Price)
                                     </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.IsFeatured)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CreatedOn)
-                                    </td>
+                                    @if (item.IsFeatured == true)
+                                    {
+                                        <td>
+                                            ✔
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
+                                    @if (item.IsVisible == true)
+                                    {
+                                        <td>
+                                            ✔
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
                                     <td>
                                         @Html.DisplayFor(modelItem => item.ExpiryDate)
                                     </td>
@@ -69,6 +86,9 @@
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.RemainingCoupons)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Coupons", "ProductCoupon",  new { ProductId = item.ProductId })
                                     </td>
                                     <td>
                                         @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |

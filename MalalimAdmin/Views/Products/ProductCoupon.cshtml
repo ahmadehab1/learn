@@ -1,0 +1,76 @@
+﻿@model IEnumerable<MalalimAdmin.Models.Coupon>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Coupons</h2>
+
+<section>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box">
+                <div class="box-body">
+                    @if (Model.FirstOrDefault() == null)
+                    {
+                        <h2>No Coupons Found</h2>
+                    }
+                    else
+                    {
+                        <table class="DTClass table table-bordered table-striped">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Code)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IsDrawed)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DrawedBy)
+                                </th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Code)
+                                    </td>
+                                    <td>
+                                        $ @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    @if (item.IsDrawed == true)
+                                    {
+                                        <td>
+                                            ✔
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
+                                    @if (item.DrawedBy != null)
+                                    {
+                                        <td>
+                                            item.DrawedBy
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>Not Drawed Yet</td>
+                                    }
+                                </tr>
+                            }
+
+                        </table>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

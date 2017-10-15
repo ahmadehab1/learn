@@ -4,7 +4,6 @@
     <EntitySet Name="ActivationUserInformations" EntityType="MalalimModel.ActivationUserInformation" />
     <EntitySet Name="Cities" EntityType="MalalimModel.City" />
     <EntitySet Name="Countries" EntityType="MalalimModel.Country" />
-    <EntitySet Name="Coupons" EntityType="MalalimModel.Coupon" />
     <EntitySet Name="Genders" EntityType="MalalimModel.Gender" />
     <EntitySet Name="Intrests" EntityType="MalalimModel.Intrest" />
     <EntitySet Name="OrderCoupons" EntityType="MalalimModel.OrderCoupon" />
@@ -12,7 +11,6 @@
     <EntitySet Name="Payments" EntityType="MalalimModel.Payment" />
     <EntitySet Name="PaymentMethods" EntityType="MalalimModel.PaymentMethod" />
     <EntitySet Name="PaymentStatus" EntityType="MalalimModel.PaymentStatu" />
-    <EntitySet Name="Products" EntityType="MalalimModel.Product" />
     <EntitySet Name="tbl_AdminRoles" EntityType="MalalimModel.tbl_AdminRoles" />
     <EntitySet Name="tbl_AdminUserClaims" EntityType="MalalimModel.tbl_AdminUserClaims" />
     <EntitySet Name="tbl_AdminUserLogins" EntityType="MalalimModel.tbl_AdminUserLogins" />
@@ -42,14 +40,6 @@
       <End Role="Country" EntitySet="Countries" />
       <End Role="City" EntitySet="Cities" />
     </AssociationSet>
-    <AssociationSet Name="FK_Coupon_Product" Association="MalalimModel.FK_Coupon_Product">
-      <End Role="Product" EntitySet="Products" />
-      <End Role="Coupon" EntitySet="Coupons" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderCoupons_Coupon" Association="MalalimModel.FK_OrderCoupons_Coupon">
-      <End Role="Coupon" EntitySet="Coupons" />
-      <End Role="OrderCoupon" EntitySet="OrderCoupons" />
-    </AssociationSet>
     <AssociationSet Name="FK_OrderCoupons_Orders" Association="MalalimModel.FK_OrderCoupons_Orders">
       <End Role="Order" EntitySet="Orders" />
       <End Role="OrderCoupon" EntitySet="OrderCoupons" />
@@ -65,14 +55,6 @@
     <AssociationSet Name="FK_Payment_PaymentStatus" Association="MalalimModel.FK_Payment_PaymentStatus">
       <End Role="PaymentStatu" EntitySet="PaymentStatus" />
       <End Role="Payment" EntitySet="Payments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Product_tbl_AdminUsers" Association="MalalimModel.FK_Product_tbl_AdminUsers">
-      <End Role="tbl_AdminUsers" EntitySet="tbl_AdminUsers" />
-      <End Role="Product" EntitySet="Products" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Wishlist_Product" Association="MalalimModel.FK_Wishlist_Product">
-      <End Role="Product" EntitySet="Products" />
-      <End Role="Wishlist" EntitySet="Wishlists" />
     </AssociationSet>
     <AssociationSet Name="FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId" Association="MalalimModel.FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId">
       <End Role="tbl_AdminUsers" EntitySet="tbl_AdminUsers" />
@@ -110,6 +92,24 @@
     <AssociationSet Name="FK_UserIntrests_tbl_ClientUsers" Association="MalalimModel.FK_UserIntrests_tbl_ClientUsers">
       <End Role="tbl_ClientUsers" EntitySet="tbl_ClientUsers" />
       <End Role="UserIntrest" EntitySet="UserIntrests" />
+    </AssociationSet>
+    <EntitySet Name="Products" EntityType="MalalimModel.Product" />
+    <AssociationSet Name="FK_Product_tbl_AdminUsers" Association="MalalimModel.FK_Product_tbl_AdminUsers">
+      <End Role="tbl_AdminUsers" EntitySet="tbl_AdminUsers" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wishlist_Product" Association="MalalimModel.FK_Wishlist_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Wishlist" EntitySet="Wishlists" />
+    </AssociationSet>
+    <EntitySet Name="Coupons" EntityType="MalalimModel.Coupon" />
+    <AssociationSet Name="FK_Coupon_Product" Association="MalalimModel.FK_Coupon_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Coupon" EntitySet="Coupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderCoupons_Coupon" Association="MalalimModel.FK_OrderCoupons_Coupon">
+      <End Role="Coupon" EntitySet="Coupons" />
+      <End Role="OrderCoupon" EntitySet="OrderCoupons" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="ActivationUserInformation">
@@ -152,23 +152,6 @@
     <NavigationProperty Name="ActivationUserInformations" Relationship="MalalimModel.FK_ActivationUserInformation_Countries" FromRole="Country" ToRole="ActivationUserInformation" />
     <NavigationProperty Name="Cities" Relationship="MalalimModel.FK_Cities_Countries" FromRole="Country" ToRole="City" />
   </EntityType>
-  <EntityType Name="Coupon">
-    <Key>
-      <PropertyRef Name="CouponId" />
-    </Key>
-    <Property Name="CouponId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Code" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="ProductId" Type="Int32" Nullable="false" />
-    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="IsWin" Type="Boolean" />
-    <Property Name="IsDrawed" Type="Boolean" Nullable="false" />
-    <Property Name="CreatedOn" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="LockedTill" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="DrawedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Product" Relationship="MalalimModel.FK_Coupon_Product" FromRole="Coupon" ToRole="Product" />
-    <NavigationProperty Name="OrderCoupons" Relationship="MalalimModel.FK_OrderCoupons_Coupon" FromRole="Coupon" ToRole="OrderCoupon" />
-  </EntityType>
   <EntityType Name="Gender">
     <Key>
       <PropertyRef Name="GenderId" />
@@ -192,8 +175,8 @@
     <Property Name="OrderCouponsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CouponId" Type="Int64" Nullable="false" />
     <Property Name="OrderId" Type="Int64" Nullable="false" />
-    <NavigationProperty Name="Coupon" Relationship="MalalimModel.FK_OrderCoupons_Coupon" FromRole="OrderCoupon" ToRole="Coupon" />
     <NavigationProperty Name="Order" Relationship="MalalimModel.FK_OrderCoupons_Orders" FromRole="OrderCoupon" ToRole="Order" />
+    <NavigationProperty Name="Coupon" Relationship="MalalimModel.FK_OrderCoupons_Coupon" FromRole="OrderCoupon" ToRole="Coupon" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -246,30 +229,6 @@
     <Property Name="Code" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Payments" Relationship="MalalimModel.FK_Payment_PaymentStatus" FromRole="PaymentStatu" ToRole="Payment" />
   </EntityType>
-  <EntityType Name="Product">
-    <Key>
-      <PropertyRef Name="ProductId" />
-    </Key>
-    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="Image1" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Image2" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Image3" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Image4" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="IsFeatured" Type="Boolean" Nullable="false" />
-    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="ExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="TotalCoupons" Type="Int64" Nullable="false" />
-    <Property Name="RemainingCoupons" Type="Int64" Nullable="false" />
-    <Property Name="MaxCouponsPerOrder" Type="Int32" Nullable="false" />
-    <Property Name="WinnerCouponId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="IsVisible" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Coupons" Relationship="MalalimModel.FK_Coupon_Product" FromRole="Product" ToRole="Coupon" />
-    <NavigationProperty Name="tbl_AdminUsers" Relationship="MalalimModel.FK_Product_tbl_AdminUsers" FromRole="Product" ToRole="tbl_AdminUsers" />
-    <NavigationProperty Name="Wishlists" Relationship="MalalimModel.FK_Wishlist_Product" FromRole="Product" ToRole="Wishlist" />
-  </EntityType>
   <EntityType Name="tbl_AdminRoles">
     <Key>
       <PropertyRef Name="Id" />
@@ -315,10 +274,10 @@
     <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
     <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
     <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Products" Relationship="MalalimModel.FK_Product_tbl_AdminUsers" FromRole="tbl_AdminUsers" ToRole="Product" />
     <NavigationProperty Name="tbl_AdminUserClaims" Relationship="MalalimModel.FK_dbo_tbl_AdminUserClaims_dbo_tbl_AdminUsers_UserId" FromRole="tbl_AdminUsers" ToRole="tbl_AdminUserClaims" />
     <NavigationProperty Name="tbl_AdminUserLogins" Relationship="MalalimModel.FK_dbo_tbl_AdminUserLogins_dbo_tbl_AdminUsers_UserId" FromRole="tbl_AdminUsers" ToRole="tbl_AdminUserLogins" />
     <NavigationProperty Name="tbl_AdminRoles" Relationship="MalalimModel.tbl_AdminUserRoles" FromRole="tbl_AdminUsers" ToRole="tbl_AdminRoles" />
+    <NavigationProperty Name="Products" Relationship="MalalimModel.FK_Product_tbl_AdminUsers" FromRole="tbl_AdminUsers" ToRole="Product" />
   </EntityType>
   <EntityType Name="tbl_ClientRoles">
     <Key>
@@ -380,8 +339,8 @@
     <Property Name="ProductId" Type="Int32" Nullable="false" />
     <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="IsLiked" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Product" Relationship="MalalimModel.FK_Wishlist_Product" FromRole="Wishlist" ToRole="Product" />
     <NavigationProperty Name="tbl_ClientUsers" Relationship="MalalimModel.FK_Wishlist_tbl_ClientUsers" FromRole="Wishlist" ToRole="tbl_ClientUsers" />
+    <NavigationProperty Name="Product" Relationship="MalalimModel.FK_Wishlist_Product" FromRole="Wishlist" ToRole="Product" />
   </EntityType>
   <Association Name="FK_ActivationUserInformation_Cities">
     <End Type="MalalimModel.City" Role="City" Multiplicity="1" />
@@ -443,30 +402,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Coupon_Product">
-    <End Type="MalalimModel.Product" Role="Product" Multiplicity="1" />
-    <End Type="MalalimModel.Coupon" Role="Coupon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="ProductId" />
-      </Principal>
-      <Dependent Role="Coupon">
-        <PropertyRef Name="ProductId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OrderCoupons_Coupon">
-    <End Type="MalalimModel.Coupon" Role="Coupon" Multiplicity="1" />
-    <End Type="MalalimModel.OrderCoupon" Role="OrderCoupon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Coupon">
-        <PropertyRef Name="CouponId" />
-      </Principal>
-      <Dependent Role="OrderCoupon">
-        <PropertyRef Name="CouponId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_OrderCoupons_Orders">
     <End Type="MalalimModel.Order" Role="Order" Multiplicity="1" />
     <End Type="MalalimModel.OrderCoupon" Role="OrderCoupon" Multiplicity="*" />
@@ -512,30 +447,6 @@
       </Principal>
       <Dependent Role="Payment">
         <PropertyRef Name="PaymentStatusId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Product_tbl_AdminUsers">
-    <End Type="MalalimModel.tbl_AdminUsers" Role="tbl_AdminUsers" Multiplicity="1" />
-    <End Type="MalalimModel.Product" Role="Product" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_AdminUsers">
-        <PropertyRef Name="UserId" />
-      </Principal>
-      <Dependent Role="Product">
-        <PropertyRef Name="CreatedBy" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Wishlist_Product">
-    <End Type="MalalimModel.Product" Role="Product" Multiplicity="1" />
-    <End Type="MalalimModel.Wishlist" Role="Wishlist" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="ProductId" />
-      </Principal>
-      <Dependent Role="Wishlist">
-        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -646,6 +557,96 @@
       </Principal>
       <Dependent Role="UserIntrest">
         <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Image1" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Image2" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Image3" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Image4" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsFeatured" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TotalCoupons" Type="Int64" Nullable="false" />
+    <Property Name="RemainingCoupons" Type="Int64" Nullable="false" />
+    <Property Name="MaxCouponsPerOrder" Type="Int32" Nullable="false" />
+    <Property Name="WinnerCouponId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IsVisible" Type="Boolean" Nullable="false" />
+    <Property Name="CouponPrice" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tbl_AdminUsers" Relationship="MalalimModel.FK_Product_tbl_AdminUsers" FromRole="Product" ToRole="tbl_AdminUsers" />
+    <NavigationProperty Name="Wishlists" Relationship="MalalimModel.FK_Wishlist_Product" FromRole="Product" ToRole="Wishlist" />
+    <NavigationProperty Name="Coupons" Relationship="MalalimModel.FK_Coupon_Product" FromRole="Product" ToRole="Coupon" />
+  </EntityType>
+  <Association Name="FK_Product_tbl_AdminUsers">
+    <End Type="MalalimModel.tbl_AdminUsers" Role="tbl_AdminUsers" Multiplicity="1" />
+    <End Type="MalalimModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_AdminUsers">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wishlist_Product">
+    <End Type="MalalimModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="MalalimModel.Wishlist" Role="Wishlist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Wishlist">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Coupon">
+    <Key>
+      <PropertyRef Name="CouponId" />
+    </Key>
+    <Property Name="CouponId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="IsWin" Type="Boolean" />
+    <Property Name="IsDrawed" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="LockedTill" Type="DateTime" Precision="0" />
+    <Property Name="DrawedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="MalalimModel.FK_Coupon_Product" FromRole="Coupon" ToRole="Product" />
+    <NavigationProperty Name="OrderCoupons" Relationship="MalalimModel.FK_OrderCoupons_Coupon" FromRole="Coupon" ToRole="OrderCoupon" />
+  </EntityType>
+  <Association Name="FK_Coupon_Product">
+    <End Type="MalalimModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="MalalimModel.Coupon" Role="Coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Coupon">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderCoupons_Coupon">
+    <End Type="MalalimModel.Coupon" Role="Coupon" Multiplicity="1" />
+    <End Type="MalalimModel.OrderCoupon" Role="OrderCoupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="CouponId" />
+      </Principal>
+      <Dependent Role="OrderCoupon">
+        <PropertyRef Name="CouponId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

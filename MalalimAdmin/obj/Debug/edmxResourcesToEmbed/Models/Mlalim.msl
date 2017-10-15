@@ -36,22 +36,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Coupons">
-      <EntityTypeMapping TypeName="MalalimModel.Coupon">
-        <MappingFragment StoreEntitySet="Coupon">
-          <ScalarProperty Name="DrawedBy" ColumnName="DrawedBy" />
-          <ScalarProperty Name="LockedTill" ColumnName="LockedTill" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="IsDrawed" ColumnName="IsDrawed" />
-          <ScalarProperty Name="IsWin" ColumnName="IsWin" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="CouponId" ColumnName="CouponId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Genders">
       <EntityTypeMapping TypeName="MalalimModel.Gender">
         <MappingFragment StoreEntitySet="Gender">
@@ -122,28 +106,6 @@
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="PaymentStatusId" ColumnName="PaymentStatusId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Products">
-      <EntityTypeMapping TypeName="MalalimModel.Product">
-        <MappingFragment StoreEntitySet="Product">
-          <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
-          <ScalarProperty Name="WinnerCouponId" ColumnName="WinnerCouponId" />
-          <ScalarProperty Name="MaxCouponsPerOrder" ColumnName="MaxCouponsPerOrder" />
-          <ScalarProperty Name="RemainingCoupons" ColumnName="RemainingCoupons" />
-          <ScalarProperty Name="TotalCoupons" ColumnName="TotalCoupons" />
-          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
-          <ScalarProperty Name="Image4" ColumnName="Image4" />
-          <ScalarProperty Name="Image3" ColumnName="Image3" />
-          <ScalarProperty Name="Image2" ColumnName="Image2" />
-          <ScalarProperty Name="Image1" ColumnName="Image1" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -269,6 +231,45 @@
           <ScalarProperty Name="IntrestId" ColumnName="IntrestId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="UserIntrestsId" ColumnName="UserIntrestsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="MalalimModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="CouponPrice" ColumnName="CouponPrice" />
+          <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+          <ScalarProperty Name="WinnerCouponId" ColumnName="WinnerCouponId" />
+          <ScalarProperty Name="MaxCouponsPerOrder" ColumnName="MaxCouponsPerOrder" />
+          <ScalarProperty Name="RemainingCoupons" ColumnName="RemainingCoupons" />
+          <ScalarProperty Name="TotalCoupons" ColumnName="TotalCoupons" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
+          <ScalarProperty Name="Image4" ColumnName="Image4" />
+          <ScalarProperty Name="Image3" ColumnName="Image3" />
+          <ScalarProperty Name="Image2" ColumnName="Image2" />
+          <ScalarProperty Name="Image1" ColumnName="Image1" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Coupons">
+      <EntityTypeMapping TypeName="MalalimModel.Coupon">
+        <MappingFragment StoreEntitySet="Coupon">
+          <ScalarProperty Name="DrawedBy" ColumnName="DrawedBy" />
+          <ScalarProperty Name="LockedTill" ColumnName="LockedTill" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDrawed" ColumnName="IsDrawed" />
+          <ScalarProperty Name="IsWin" ColumnName="IsWin" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="CouponId" ColumnName="CouponId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

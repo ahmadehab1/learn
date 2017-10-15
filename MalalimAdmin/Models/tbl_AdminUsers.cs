@@ -17,10 +17,10 @@ namespace MalalimAdmin.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_AdminUsers()
         {
-            this.Products = new HashSet<Product>();
             this.tbl_AdminUserClaims = new HashSet<tbl_AdminUserClaims>();
             this.tbl_AdminUserLogins = new HashSet<tbl_AdminUserLogins>();
             this.tbl_AdminRoles = new HashSet<tbl_AdminRoles>();
+            this.Products = new HashSet<Product>();
         }
     
         public string UserId { get; set; }
@@ -37,12 +37,12 @@ namespace MalalimAdmin.Models
         public string UserName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Products { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_AdminUserClaims> tbl_AdminUserClaims { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_AdminUserLogins> tbl_AdminUserLogins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_AdminRoles> tbl_AdminRoles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

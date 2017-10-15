@@ -26,9 +26,9 @@ namespace MalalimAdmin.Models
         public string UserId { get; set; }
         public decimal Price { get; set; }
         public Nullable<bool> IsWin { get; set; }
-        public bool IsDrawed { get; set; }
-        public string CreatedOn { get; set; }
-        public System.DateTime LockedTill { get; set; }
+        public Nullable<bool> IsDrawed { get; set; }
+        public System.DateTime CreatedOn { get; set; }
+        public Nullable<System.DateTime> LockedTill { get; set; }
         public string DrawedBy { get; set; }
     
         public virtual Product Product { get; set; }

@@ -35,9 +35,11 @@
                             </div>
                         </li>
                         <li>
-                            <a href="http://localhost:22893/Products">
-                                <i class="fa fa-area-chart"></i> <span class="nav-label">Product</span>
-                            </a>
+                            <a href=""><i class="fa fa-area-chart"></i> <span class="nav-label">Products</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="http://localhost:22893/Products">List</a></li>
+                                <li><a href="http://localhost:22893/Products/Create">Add new</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="http://localhost:22893/Account/Register"><i class="fa fa-user-md"></i> <span class="nav-label">Admins</span></a>
@@ -135,10 +137,18 @@
     @*<script src="~/Scripts/select2.min.js"></script>*@
     <script src="~/Scripts/jquery-ui.min.js"></script>
     <script src="~/Plugins/aws-sdk-js-master/dist/aws-sdk.min.js"></script>
-
+    <!-- Data picker -->
+    <script src="~/Content/js/plugins/datapicker/bootstrap-datepicker.js"></script>
     @RenderSection("scripts", required: false)
 
     <script>
+        $('#data_1 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true
+        });
         $(function () {
             $('.DTClass').DataTable({
                 "paging": true,

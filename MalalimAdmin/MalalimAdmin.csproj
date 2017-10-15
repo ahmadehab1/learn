@@ -385,6 +385,7 @@
     <Content Include="Content\js\jquery-3.1.1.min.js" />
     <Content Include="Content\js\plugins\chartJs\Chart.min.js" />
     <Content Include="Content\js\plugins\chosen\chosen.jquery.js" />
+    <Content Include="Content\js\plugins\datapicker\bootstrap-datepicker.js" />
     <Content Include="Content\js\plugins\datatables\dataTables.bootstrap.css" />
     <Content Include="Content\js\plugins\datatables\dataTables.bootstrap.js" />
     <Content Include="Content\js\plugins\datatables\dataTables.bootstrap.min.js" />
@@ -838,6 +839,7 @@
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_MalalimLayout.cshtml" />
+    <Content Include="Views\Products\ProductCoupon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

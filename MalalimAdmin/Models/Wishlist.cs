@@ -19,7 +19,7 @@ namespace MalalimAdmin.Models
         public string UserId { get; set; }
         public bool IsLiked { get; set; }
     
-        public virtual Product Product { get; set; }
         public virtual tbl_ClientUsers tbl_ClientUsers { get; set; }
+        public virtual Product Product { get; set; }
     }
 }
