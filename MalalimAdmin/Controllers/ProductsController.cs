@@ -20,13 +20,13 @@ namespace MalalimAdmin.Controllers
         public ActionResult Index()
         {
             var products = db.Products.Include(p => p.tbl_AdminUsers);
-            return View(products.Where(p => p.IsClosed == false).ToList());
+            return View(products.Where(p => p.IsClosed != true).ToList());
         }
 
         public ActionResult ClosedProducts()
         {
             var products = db.Products.Include(p => p.tbl_AdminUsers);
-            return View(products.Where(p => p.IsClosed != false).ToList());
+            return View(products.Where(p => p.IsClosed == true).ToList());
         }
 
         // GET: Products/Details/5
@@ -110,6 +110,11 @@ namespace MalalimAdmin.Controllers
             {
                 return HttpNotFound();
             }
+            if (product.IsClosed == true)
+            {
+                return HttpNotFound();
+            }
+            
             ViewBag.CreatedBy = new SelectList(db.tbl_AdminUsers, "UserId", "Email", product.CreatedBy);
             return View(product);
         }
@@ -149,7 +154,7 @@ namespace MalalimAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var coupons = db.Coupons.AsNoTracking().Where(c => c.ProductId == productId && c.IsDrawed == true).ToList();
+            var coupons = db.Coupons.Where(c => c.ProductId == productId && c.IsDrawed == true).ToList();
             if (coupons != null && coupons.Count > 0)
             {
                 var SelectedArray = coupons.Select(m => m.CouponId).ToArray<long>();
@@ -217,7 +222,8 @@ namespace MalalimAdmin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);
-            db.Products.Remove(product);
+            //db.Products.Remove(product);
+            product.IsClosed = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
