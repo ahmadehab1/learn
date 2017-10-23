@@ -5,7 +5,7 @@
 }
 
 <h2>Coupons</h2>
-
+@Html.ActionLink("Select Random", "RandomCoupon", new { productId = Model.FirstOrDefault().ProductId })
 <section>
     <div class="row">
         <div class="col-lg-12">
@@ -18,26 +18,29 @@
                     else
                     {
                         <table class="DTClass table table-bordered table-striped">
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Code)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Price)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.IsDrawed)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.DrawedBy)
-                                </th>
-                            </tr>
-
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Code)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Price)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.IsDrawed)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DrawedBy)
+                                    </th>
+                                </tr>
+                            </thead>
                             @foreach (var item in Model)
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Code)
+                                        @*@Html.DisplayFor(modelItem => item.Code)*@
+                                        @Html.ActionLink(item.Code, "ChosenCoupon", new { productId = item.ProductId })
+
                                     </td>
                                     <td>
                                         $ @Html.DisplayFor(modelItem => item.Price)

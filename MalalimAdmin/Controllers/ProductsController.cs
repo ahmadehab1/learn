@@ -20,7 +20,13 @@ namespace MalalimAdmin.Controllers
         public ActionResult Index()
         {
             var products = db.Products.Include(p => p.tbl_AdminUsers);
-            return View(products.ToList());
+            return View(products.Where(p => p.IsClosed == false).ToList());
+        }
+
+        public ActionResult ClosedProducts()
+        {
+            var products = db.Products.Include(p => p.tbl_AdminUsers);
+            return View(products.Where(p => p.IsClosed != false).ToList());
         }
 
         // GET: Products/Details/5
@@ -135,6 +141,60 @@ namespace MalalimAdmin.Controllers
             ViewBag.ProductName = _productName;
             var coupons = db.Coupons.AsNoTracking().Where(c => c.ProductId == ProductId);
             return View(coupons.ToList());
+        }
+        public ActionResult RandomCoupon(int? productId)
+        {
+
+            if (productId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var coupons = db.Coupons.AsNoTracking().Where(c => c.ProductId == productId && c.IsDrawed == true).ToList();
+            if (coupons != null && coupons.Count > 0)
+            {
+                var SelectedArray = coupons.Select(m => m.CouponId).ToArray<long>();
+                Random rnd = new Random();
+                long RandomNumber = SelectedArray[rnd.Next(SelectedArray.Length)];
+                var coupon = coupons.FirstOrDefault(c => c.CouponId == RandomNumber);
+                coupon.IsWin = true;
+                var product = db.Products.FirstOrDefault(p => p.ProductId == productId).IsClosed = true;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+
+                    throw e;
+                }
+                return View(coupon);
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public ActionResult ChosenCoupon(int? productId)
+        {
+
+            if (productId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var coupon = db.Coupons.FirstOrDefault(c => c.ProductId == productId && c.IsDrawed == true);
+            var product = db.Products.FirstOrDefault(p => p.ProductId == productId).IsClosed = true;
+            coupon.IsWin = true;
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+            return View(coupon);
         }
         // GET: Products/Delete/5
         public ActionResult Delete(int? id)

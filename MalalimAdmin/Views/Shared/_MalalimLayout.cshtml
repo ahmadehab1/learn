@@ -37,7 +37,8 @@
                         <li>
                             <a href=""><i class="fa fa-area-chart"></i> <span class="nav-label">Products</span> <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li><a href="http://localhost:22893/Products">List</a></li>
+                                <li><a href="http://localhost:22893/Products">Active Products</a></li>
+                                <li><a href="http://localhost:22893/Products/ClosedProducts">Closed Products</a></li>
                                 <li><a href="http://localhost:22893/Products/Create">Add new</a></li>
                             </ul>
                         </li>
@@ -152,13 +153,13 @@
         $(function () {
             $('.DTClass').DataTable({
                 "paging": true,
-                "lengthChange": false,
+                "lengthChange": true,
                 "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                 "searching": true,
                 "ordering": true,
                 "order": [[2, "desc"]],
                 "info": true,
-                "autoWidth": false,
+                "autoWidth": true,
                 "Filter": false,
                 "columnDefs": [{ "defaultContent": "-", "targets": "_all" }]
             });

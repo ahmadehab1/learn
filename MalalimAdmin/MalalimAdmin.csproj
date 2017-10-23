@@ -840,6 +840,9 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_MalalimLayout.cshtml" />
     <Content Include="Views\Products\ProductCoupon.cshtml" />
+    <Content Include="Views\Products\ChosenCoupon.cshtml" />
+    <Content Include="Views\Products\RandomCoupon.cshtml" />
+    <Content Include="Views\Products\ClosedProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

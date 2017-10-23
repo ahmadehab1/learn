@@ -1,0 +1,14 @@
+﻿@model MalalimAdmin.Models.Coupon
+
+@{
+    ViewBag.Title = "RandomCoupon";
+}
+@if (Model != null)
+{
+<h2>@Model.Code</h2>
+}
+else
+{
+      <h2> This Product don't has any drawed coupon</h2> 
+}
+

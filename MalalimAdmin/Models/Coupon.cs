@@ -25,14 +25,14 @@ namespace MalalimAdmin.Models
         public int ProductId { get; set; }
         public string UserId { get; set; }
         public decimal Price { get; set; }
-        public Nullable<bool> IsWin { get; set; }
-        public Nullable<bool> IsDrawed { get; set; }
+        public bool IsWin { get; set; }
+        public bool IsDrawed { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public Nullable<System.DateTime> LockedTill { get; set; }
         public string DrawedBy { get; set; }
     
-        public virtual Product Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderCoupon> OrderCoupons { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

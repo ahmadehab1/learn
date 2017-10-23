@@ -41,8 +41,8 @@
     <Property Name="ProductId" Type="int" Nullable="false" />
     <Property Name="UserId" Type="nvarchar" MaxLength="128" />
     <Property Name="Price" Type="money" Nullable="false" />
-    <Property Name="IsWin" Type="bit" />
-    <Property Name="IsDrawed" Type="bit" />
+    <Property Name="IsWin" Type="bit" Nullable="false" />
+    <Property Name="IsDrawed" Type="bit" Nullable="false" />
     <Property Name="CreatedOn" Type="date" Nullable="false" />
     <Property Name="LockedTill" Type="date" />
     <Property Name="DrawedBy" Type="nvarchar" MaxLength="128" />
@@ -134,6 +134,7 @@
     <Property Name="WinnerCouponId" Type="nvarchar" MaxLength="128" />
     <Property Name="IsVisible" Type="bit" Nullable="false" />
     <Property Name="CouponPrice" Type="int" Nullable="false" />
+    <Property Name="IsClosed" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_AdminRoles">
     <Key>

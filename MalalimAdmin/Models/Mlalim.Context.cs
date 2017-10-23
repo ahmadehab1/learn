@@ -45,7 +45,7 @@ namespace MalalimAdmin.Models
         public virtual DbSet<tbl_ClientUsers> tbl_ClientUsers { get; set; }
         public virtual DbSet<Wishlist> Wishlists { get; set; }
         public virtual DbSet<UserIntrest> UserIntrests { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Coupon> Coupons { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     }
 }
